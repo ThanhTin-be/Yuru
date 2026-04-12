@@ -327,7 +327,7 @@
     .about-img-wrap {
       width: 100%;
       padding-bottom: 125%;
-      background: url('https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=800&q=80') center/cover;
+      background: url('imgs/Trang&Linh.jpg') center/cover;
       border-radius: 4px;
       position: relative;
     }
@@ -338,18 +338,34 @@
       left: -1.5rem;
       background: var(--forest);
       color: var(--cream);
-      padding: 1.2rem 1.5rem;
-      border-radius: 2px;
+      padding: 2rem 1.8rem 1.8rem;
+      clip-path: path('M10 70 C-5 40, 5 5, 40 2 C70 -2, 110 8, 125 35 C140 60, 130 100, 105 115 C80 130, 30 128, 12 105 C-2 88, 20 95, 10 70Z');
+      width: 145px;
+      height: 135px;
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      line-height: 1.4;
-      max-width: 180px;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      text-align: center;
+      filter: drop-shadow(0 8px 18px rgba(44, 74, 41, 0.35));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
     }
 
-    .about-badge strong {
+    .about-badge-icon {
+      font-size: 2.2rem;
+      line-height: 1;
       display: block;
-      font-size: 1.6rem;
-      font-weight: 400;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    .about-badge span:not(.about-badge-icon) {
+      font-style: italic;
+      font-size: 0.85rem;
+      opacity: 0.9;
+      letter-spacing: 0.01em;
     }
 
     /* AMENITIES */
@@ -509,9 +525,9 @@
 
     .getting-here-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 4rem;
-      align-items: start;
+      align-items: stretch;
     }
 
     .address-block {
@@ -552,12 +568,14 @@
     }
 
     .map-placeholder {
-      width: 100%;
-      height: 320px;
-      background: url('https://images.unsplash.com/photo-1468413253725-0d5181091126?w=800&q=80') center/cover;
-      border-radius: 4px;
-      position: relative;
+      border-radius: 20px;
       overflow: hidden;
+      height: 100%;
+      max-height: calc(100svh - 80px);
+      position: relative;
+      min-height: 440px;
+      width: 100%;
+      background: url('imgs/The view (2).JPG') center/cover no-repeat;
     }
 
     .map-pin {
@@ -1414,7 +1432,7 @@
         <div class="about-visual reveal">
           <div class="about-img-wrap"></div>
           <div class="about-badge">
-            <strong>Private</strong> Beach Access to Oyster & Clam Beds
+            <span>private beach access to oysters</span>
           </div>
         </div>
       </div>
@@ -1790,7 +1808,7 @@
             Peninsula: US-101 → Brinnon → Pleasant Harbor Rd. Third property on the right.</p>
         </div>
         <div class="reveal">
-          <div class="map-placeholder">
+          <div class="map-placeholder" role="img" aria-label="Hoàng hôn" title="Hoàng hôn">
             <div class="map-pin"></div>
             <div class="map-label">YuRu · Brinnon, WA</div>
           </div>
