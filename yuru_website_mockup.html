@@ -1,0 +1,1998 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YuRu — Hood Canal Glamping Retreat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&family=Sacramento&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --cream: #F4EFE4;
+      --cream-dark: #EBE3D2;
+      --sand: #C8B89A;
+      --sand-light: #DDD0BA;
+      --forest: #2C4A29;
+      --forest-mid: #3D6438;
+      --forest-light: #5A8A52;
+      --slate: #4A6670;
+      --slate-light: #7A9BA3;
+      --charcoal: #2A2A24;
+      --text-muted: #7A7268;
+      --white: #FDFAF5;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.2rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(244, 239, 228, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200, 184, 154, 0.3);
+      transition: background 0.3s;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--forest);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-logo span {
+      font-style: italic;
+      color: var(--forest-mid);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--charcoal);
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 400;
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .nav-cta {
+      background: var(--forest) !important;
+      color: var(--cream) !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 2px;
+      opacity: 1 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--forest-mid) !important;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(to bottom, rgba(44, 74, 41, 0.28) 0%, rgba(42, 42, 36, 0.52) 100%),
+        url('imgs/The view (3).JPG') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .hero-kicker {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(244, 239, 228, 0.75);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 8vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+      animation: fadeUp 0.9s 0.15s ease both;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--sand-light);
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      color: rgba(244, 239, 228, 0.8);
+      max-width: 420px;
+      letter-spacing: 0.04em;
+      animation: fadeUp 1s 0.3s ease both;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-tagline strong {
+      font-weight: 400;
+      color: var(--sand-light);
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeUp 1s 0.45s ease both;
+    }
+
+    .btn-primary {
+      background: var(--forest);
+      color: var(--cream);
+      padding: 0.85rem 2.2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 400;
+      transition: background 0.2s, transform 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary:hover {
+      background: var(--forest-mid);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      padding: 0.85rem 2.2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 400;
+      border: 1px solid rgba(244, 239, 228, 0.45);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(244, 239, 228, 0.85);
+      transform: translateY(-1px);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      animation: fadeUp 1s 0.7s ease both;
+    }
+
+    .hero-scroll span {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(244, 239, 228, 0.55);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: rgba(244, 239, 228, 0.35);
+      animation: scrollPulse 2s ease infinite;
+    }
+
+    /* SECTION COMMON */
+    section {
+      padding: 6rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--forest-light);
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--forest-mid);
+    }
+
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--sand);
+      margin: 1.5rem 0;
+    }
+
+    /* ABOUT */
+    .about {
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+      font-size: 0.97rem;
+    }
+
+    .about-text p strong {
+      font-weight: 500;
+      color: var(--charcoal);
+    }
+
+    .fact-pill {
+      display: inline-block;
+      background: var(--cream);
+      border: 1px solid var(--sand-light);
+      border-radius: 2px;
+      padding: 0.75rem 1.25rem;
+      margin-top: 1rem;
+      font-size: 0.82rem;
+      color: var(--forest);
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-img-wrap {
+      width: 100%;
+      padding-bottom: 125%;
+      background: url('https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=800&q=80') center/cover;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      left: -1.5rem;
+      background: var(--forest);
+      color: var(--cream);
+      padding: 1.2rem 1.5rem;
+      border-radius: 2px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      line-height: 1.4;
+      max-width: 180px;
+    }
+
+    .about-badge strong {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 400;
+    }
+
+    /* AMENITIES */
+    .amenities {
+      background: var(--cream-dark);
+    }
+
+    .amenities-header {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .amenities-header .divider {
+      margin: 1.5rem auto;
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5px;
+      background: var(--sand-light);
+      border: 1px solid var(--sand-light);
+    }
+
+    .amenity-card {
+      background: var(--white);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: background 0.2s;
+    }
+
+    .amenity-card:hover {
+      background: var(--cream);
+    }
+
+    .amenity-icon {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--sand);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .amenity-icon svg {
+      width: 15px;
+      height: 15px;
+      stroke: var(--forest);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .amenity-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--charcoal);
+    }
+
+    .amenity-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .kitchen-note {
+      margin-top: 2.5rem;
+      background: var(--forest);
+      color: var(--cream);
+      padding: 2rem 2.5rem;
+      border-radius: 2px;
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .kitchen-note-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sand-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .kitchen-note h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .kitchen-note p {
+      font-size: 0.87rem;
+      opacity: 0.8;
+      max-width: 480px;
+    }
+
+    /* LOCAL GUIDE */
+    .local {
+      background: var(--white);
+    }
+
+    .local-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .local-col h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+
+    .local-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(200, 184, 154, 0.25);
+      font-size: 0.9rem;
+    }
+
+    .local-item:last-child {
+      border-bottom: none;
+    }
+
+    .local-item-name {
+      color: var(--charcoal);
+    }
+
+    .local-item-dist {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+      margin-left: 1rem;
+    }
+
+    .local-item-dist.onsite {
+      color: var(--forest-light);
+      font-style: italic;
+    }
+
+    /* GETTING HERE */
+    .getting-here {
+      background: var(--cream-dark);
+    }
+
+    .getting-here-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .address-block {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      line-height: 1.5;
+      color: var(--charcoal);
+      margin-bottom: 2rem;
+    }
+
+    .route-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .route-option {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--white);
+      border-radius: 2px;
+      border-left: 3px solid var(--forest-light);
+      font-size: 0.87rem;
+      color: var(--charcoal);
+    }
+
+    .route-option .route-type {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--forest-light);
+      font-weight: 400;
+      min-width: 50px;
+    }
+
+    .map-placeholder {
+      width: 100%;
+      height: 320px;
+      background: url('https://images.unsplash.com/photo-1468413253725-0d5181091126?w=800&q=80') center/cover;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-pin {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--forest);
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      box-shadow: 0 0 0 6px rgba(44, 74, 41, 0.25);
+    }
+
+    .map-label {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      background: var(--forest);
+      color: var(--cream);
+      padding: 0.4rem 0.8rem;
+      border-radius: 2px;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      background: var(--forest);
+    }
+
+    .testimonials .section-label {
+      color: var(--sand-light);
+      opacity: 0.75;
+    }
+
+    .testimonials .section-title {
+      color: var(--white);
+    }
+
+    .testimonials .section-title em {
+      color: var(--sand-light);
+    }
+
+    .testimonials .divider {
+      background: var(--sand);
+      opacity: 0.4;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(200, 184, 154, 0.15);
+      margin-top: 3rem;
+    }
+
+    .review-card {
+      background: rgba(44, 74, 41, 0.4);
+      padding: 2.5rem 2rem;
+      position: relative;
+    }
+
+    .review-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.55;
+      margin-bottom: 1.5rem;
+    }
+
+    .review-stars {
+      color: var(--sand-light);
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      margin-bottom: 0.4rem;
+    }
+
+    .review-source {
+      font-size: 0.75rem;
+      color: rgba(200, 184, 154, 0.65);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* PACK */
+    .pack {
+      background: var(--white);
+    }
+
+    .pack-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .pack-col h3 {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--forest-light);
+      margin-bottom: 1.2rem;
+    }
+
+    .pack-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .pack-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--cream-dark);
+      font-size: 0.9rem;
+      color: var(--charcoal);
+    }
+
+    .pack-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .must .pack-dot {
+      background: var(--forest);
+    }
+
+    .nice .pack-dot {
+      background: var(--sand);
+    }
+
+    /* BOOKING CTA */
+    .booking-cta {
+      background:
+        linear-gradient(to right, rgba(44, 74, 41, 0.92), rgba(44, 74, 41, 0.78)),
+        url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=1400&q=80') center/cover;
+      text-align: center;
+      padding: 7rem 2rem;
+    }
+
+    .booking-cta .section-label {
+      color: var(--sand-light);
+      opacity: 0.8;
+    }
+
+    .booking-cta .section-title {
+      color: var(--white);
+      margin: 0 auto 1rem;
+      max-width: 580px;
+    }
+
+    .booking-cta p {
+      color: rgba(244, 239, 228, 0.75);
+      max-width: 420px;
+      margin: 0 auto 2.5rem;
+      font-size: 0.95rem;
+    }
+
+    .booking-cta .divider {
+      background: var(--sand);
+      opacity: 0.4;
+      margin: 1.5rem auto;
+    }
+
+    .contact-chips {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.2rem;
+    }
+
+    .contact-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(244, 239, 228, 0.1);
+      border: 1px solid rgba(244, 239, 228, 0.25);
+      border-radius: 2px;
+      padding: 0.55rem 1.1rem;
+      font-size: 0.82rem;
+      color: rgba(244, 239, 228, 0.85);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .contact-chip:hover {
+      background: rgba(244, 239, 228, 0.18);
+    }
+
+    /* GALLERY */
+    .gallery-section {
+      background: #2A2A24;
+    }
+
+    .gallery-section .section-label {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .gallery-section .section-title {
+      color: var(--white);
+    }
+
+    .gallery-section .section-title em {
+      color: var(--sand-light);
+    }
+
+    .gallery-cats {
+      margin: 56px 0 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 340px 280px;
+      gap: 14px;
+    }
+
+    .gallery-cat:nth-child(1) {
+      grid-column: 1 / 3;
+      grid-row: 1 / 2;
+    }
+
+    .gallery-cat:nth-child(2) {
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+    }
+
+    .gallery-cat:nth-child(3) {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+    }
+
+    .gallery-cat:nth-child(4) {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+    }
+
+    .gallery-cat:nth-child(5) {
+      grid-column: 3 / 4;
+      grid-row: 2 / 3;
+    }
+
+    .gallery-cat:nth-child(6) {
+      grid-column: 1 / 4;
+      grid-row: 3 / 4;
+      height: 300px;
+    }
+
+    .gallery-cat {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(30, 32, 24, 0.8);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+      isolation: isolate;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s;
+      text-decoration: none;
+      display: block;
+    }
+
+    .gallery-cat:hover {
+      transform: translateY(-4px) scale(1.005);
+      box-shadow: 0 36px 72px rgba(0, 0, 0, 0.38);
+    }
+
+    .gallery-cat-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      filter: brightness(0.78);
+    }
+
+    .gallery-cat:hover .gallery-cat-img {
+      transform: scale(1.06);
+      filter: brightness(0.65);
+    }
+
+    .gallery-cat-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 12, 8, 0.85) 0%, rgba(10, 12, 8, 0.3) 45%, transparent 70%);
+      transition: background 0.35s;
+    }
+
+    .gallery-cat:hover .gallery-cat-overlay {
+      background: linear-gradient(to top, rgba(10, 12, 8, 0.9) 0%, rgba(10, 12, 8, 0.45) 50%, rgba(10, 12, 8, 0.1) 80%);
+    }
+
+    .gallery-cat-featured-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(184, 115, 22, 0.85);
+      backdrop-filter: blur(8px);
+      border-radius: 40px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .gallery-cat-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 24px 24px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .gallery-cat-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 2.8vw, 34px);
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    .gallery-cat:nth-child(2) .gallery-cat-name,
+    .gallery-cat:nth-child(3) .gallery-cat-name,
+    .gallery-cat:nth-child(4) .gallery-cat-name,
+    .gallery-cat:nth-child(5) .gallery-cat-name {
+      font-size: clamp(18px, 2vw, 26px);
+    }
+
+    .gallery-cat:nth-child(6) .gallery-cat-name {
+      font-size: clamp(20px, 2.2vw, 28px);
+    }
+
+    .gallery-cat-count {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      margin-top: 4px;
+    }
+
+    .gallery-cat-arrow {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: rgba(255, 255, 255, 0.7);
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
+    }
+
+    .gallery-cat:hover .gallery-cat-arrow {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translate(2px, -2px);
+      color: #fff;
+    }
+
+    .gallery-cat-arrow svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .gallery-view-all-wrap {
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .gallery-view-all-wrap::before,
+    .gallery-view-all-wrap::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-gallery-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 40px;
+      color: rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(8px);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.2s;
+    }
+
+    .btn-gallery-all:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.4);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .btn-gallery-all svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.25s;
+    }
+
+    .btn-gallery-all:hover svg {
+      transform: translateX(3px);
+    }
+
+    @media (max-width: 768px) {
+      .gallery-cats {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 260px 220px 180px;
+      }
+
+      .gallery-cat:nth-child(1) {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+      }
+
+      .gallery-cat:nth-child(2) {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+      }
+
+      .gallery-cat:nth-child(3) {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+      }
+
+      .gallery-cat:nth-child(4) {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+      }
+
+      .gallery-cat:nth-child(5) {
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
+      }
+
+      .gallery-cat:nth-child(6) {
+        grid-column: 1 / 3;
+        grid-row: 4 / 5;
+        height: 180px;
+      }
+    }
+
+    /* MISSION */
+    .mission-section {
+      background:
+        linear-gradient(to bottom, rgba(44, 74, 41, 0.91) 0%, rgba(30, 50, 28, 0.96) 100%),
+        url('https://images.unsplash.com/photo-1476611338391-6f395a0dd82e?w=1600&q=80') center/cover no-repeat fixed;
+      color: var(--cream);
+      text-align: center;
+      padding: 8rem 2rem;
+    }
+
+    .mission-section .section-label {
+      color: var(--sand-light);
+      opacity: 0.7;
+    }
+
+    .mission-section .section-title {
+      color: var(--white);
+      max-width: 640px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .mission-section .section-title em {
+      color: var(--sand-light);
+    }
+
+    .mission-section .divider {
+      background: var(--sand);
+      opacity: 0.35;
+      margin: 1.5rem auto;
+    }
+
+    .mission-body {
+      font-size: 0.97rem;
+      color: rgba(244, 239, 228, 0.72);
+      line-height: 1.85;
+      max-width: 580px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .mission-pull-quote {
+      max-width: 680px;
+      margin: 2.5rem auto;
+      padding: 2rem 2.5rem;
+      border-top: 1px solid rgba(200, 184, 154, 0.25);
+      border-bottom: 1px solid rgba(200, 184, 154, 0.25);
+    }
+
+    .mission-pull-quote blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--sand-light);
+      line-height: 1.5;
+    }
+
+    .mission-pull-quote cite {
+      display: block;
+      margin-top: 0.9rem;
+      font-size: 0.72rem;
+      color: rgba(200, 184, 154, 0.55);
+      font-style: normal;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .mission-values {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 3rem auto 0;
+      max-width: 720px;
+    }
+
+    .mission-value-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.8rem 1.4rem;
+      border: 1px solid rgba(200, 184, 154, 0.28);
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      font-size: 0.82rem;
+      color: rgba(244, 239, 228, 0.8);
+      letter-spacing: 0.04em;
+      transition: background 0.25s, border-color 0.25s;
+    }
+
+    .mission-value-pill:hover {
+      background: rgba(255, 255, 255, 0.11);
+      border-color: rgba(200, 184, 154, 0.55);
+    }
+
+    .mission-value-pill-icon {
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .duc-logo-area {
+      margin: 2.5rem auto 0;
+      padding: 1.25rem 1.6rem;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(200, 184, 154, 0.28);
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .duc-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .duc-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .duc-info {
+      text-align: left;
+    }
+
+    .duc-info p:first-child {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--cream);
+    }
+
+    .duc-info p:last-child {
+      font-size: 0.76rem;
+      color: rgba(200, 184, 154, 0.65);
+      line-height: 1.45;
+      font-weight: 300;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--charcoal);
+      color: rgba(244, 239, 228, 0.5);
+      padding: 3rem 3rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin: 1.5rem 0;
+    }
+
+    .footer-links a {
+      color: rgba(244, 239, 228, 0.45);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--cream);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scrollPulse {
+
+      0%,
+      100% {
+        opacity: 0.3;
+        transform: scaleY(1);
+      }
+
+      50% {
+        opacity: 0.8;
+        transform: scaleY(0.6);
+        transform-origin: top;
+      }
+    }
+
+
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .about-grid,
+      .getting-here-grid,
+      .local-grid,
+      .pack-grid,
+      .reviews-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .about-badge {
+        display: none;
+      }
+
+      .kitchen-note {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      section {
+        padding: 4rem 1.5rem;
+      }
+    }
+
+    /* SIGNATURE HANDWRITING ANIMATION */
+    .signature-wrap {
+      margin-top: 1.6rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .signature-text {
+      font-family: 'Sacramento', cursive;
+      font-size: 2rem;
+      color: var(--forest);
+      display: inline-block;
+      white-space: nowrap;
+      clip-path: inset(0 100% 0 0);
+      animation: sigWrite 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      line-height: 1.4;
+    }
+
+    .signature-pen {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0%;
+      width: 2px;
+      height: 1.8rem;
+      background: var(--forest);
+      border-radius: 1px;
+      animation: sigPenMove 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes sigWrite {
+      0% {
+        clip-path: inset(0 100% 0 0);
+        opacity: 1;
+      }
+
+      50% {
+        clip-path: inset(0 0% 0 0);
+        opacity: 1;
+      }
+
+      72% {
+        clip-path: inset(0 0% 0 0);
+        opacity: 1;
+      }
+
+      88% {
+        clip-path: inset(0 0% 0 0);
+        opacity: 0;
+      }
+
+      100% {
+        clip-path: inset(0 100% 0 0);
+        opacity: 0;
+      }
+    }
+
+    @keyframes sigPenMove {
+      0% {
+        left: 0%;
+        opacity: 1;
+      }
+
+      50% {
+        left: 100%;
+        opacity: 1;
+      }
+
+      72% {
+        left: 100%;
+        opacity: 0;
+      }
+
+      100% {
+        left: 0%;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">ゆる</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#amenities">Amenities</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#local">Explore</a></li>
+      <li><a href="#getting-here">Getting Here</a></li>
+      <li><a href="#mission">Our Mission</a></li>
+      <li><a class="nav-cta" href="#book">Reserve</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-kicker">115 Pleasant Harbor Rd · Brinnon, WA · Hood Canal</p>
+    <h1>Unplug<br>Slow down<br><em>Simply relax</em></h1>
+    <p class="hero-tagline">A private beach on Washington's only saltwater fjord. A glamping retreat kept for family and
+      close friends — by invitation only. Nothing rushed. Nothing wasted. Just the water and the people you love. Every
+      booking benefits the <strong>Đức Foundation.</strong></p>
+    <div class="hero-btns">
+      <a href="#book" class="btn-primary">Reserve Your Stay</a>
+      <a href="#amenities" class="btn-ghost">Explore the Property</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p class="section-label">Welcome</p>
+          <h2 class="section-title">Xin chào from<br><em>Hood Canal</em></h2>
+          <div class="divider"></div>
+          <p>We're Linh & Trang. YuRu isn't a business — it's an invitation. A place we built to share this quiet corner
+            of the canal with the family and friends who need to exhale.</p>
+          <p><strong>ゆる [Yu-Ru]</strong> is a Japanese word for a relaxed, carefree vibe. That's the feeling we hope you
+            carry home.</p>
+          <p>We keep things grounded and eco-minded here: private well water, real dishes over disposables, and a
+            genuine care for the land we're lucky enough to call our own.</p>
+          <div class="signature-wrap">
+            <span class="signature-text">Daniel Linh &amp; Anna Trang</span>
+            <span class="signature-pen"></span>
+          </div>
+          <div class="fact-pill">★ Hood Canal is the only saltwater fjord in the lower 48 states.</div>
+        </div>
+        <div class="about-visual reveal">
+          <div class="about-img-wrap"></div>
+          <div class="about-badge">
+            <strong>Private</strong> Beach Access to Oyster & Clam Beds
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AMENITIES -->
+  <section class="amenities" id="amenities">
+    <div class="section-inner">
+      <div class="amenities-header reveal">
+        <p class="section-label">Property Amenities</p>
+        <h2 class="section-title">Everything you need<br><em>to do nothing at all</em></h2>
+        <div class="divider"></div>
+      </div>
+      <div class="amenities-grid reveal">
+        <div class="amenity-card">
+          <div class="amenity-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+          </div>
+          <div class="amenity-name">Tent Platforms</div>
+          <div class="amenity-desc">Raised platforms with sweeping Hood Canal views in every direction.</div>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <div class="amenity-name">Bathrooms & Showers</div>
+          <div class="amenity-desc">Flushing toilets, hot showers, and bidet — proper comforts in nature.</div>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M15 13.5a3 3 0 01-6 0" />
+              <path
+                d="M17.8 11.8C19.1 9.5 20 7 20 4H4c0 3 .9 5.5 2.2 7.8C7.5 14.1 9 15.5 9 17v1a2 2 0 004 0v-1c0-1.5 1.5-2.9 2.8-5.2z" />
+            </svg>
+          </div>
+          <div class="amenity-name">Outdoor Chef's Kitchen</div>
+          <div class="amenity-desc">Blackstone griddle, Dacor 6-burner stove, Weber BBQ, popcorn machine & more.</div>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.64A2 2 0 012 .97h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.82a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+            </svg>
+          </div>
+          <div class="amenity-name">Private Beach Access</div>
+          <div class="amenity-desc">Direct access to your own oyster & clam beds. Low tide means dinner.</div>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M2 12h20M2 12s4-4 10-4 10 4 10 4M2 12s4 4 10 4 10-4 10-4" />
+            </svg>
+          </div>
+          <div class="amenity-name">Kayaks & Paddleboard</div>
+          <div class="amenity-desc">Grab a life jacket and explore the canal at your own pace.</div>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 8v4l3 3" />
+            </svg>
+          </div>
+          <div class="amenity-name">Outdoor Movie Theatre</div>
+          <div class="amenity-desc">Gather under the stars for film nights by the water.</div>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" />
+            </svg>
+          </div>
+          <div class="amenity-name">Beachside Fire Pit</div>
+          <div class="amenity-desc">Firewood provided. Evenings made for stories and s'mores.</div>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="1" y="6" width="14" height="8" rx="2" />
+              <path d="M23 8v3a2 2 0 01-2 2h-1V8h3zM5 14v2M9 14v2" />
+            </svg>
+          </div>
+          <div class="amenity-name">EV Charging</div>
+          <div class="amenity-desc">Arrive by electric — a charging port is on-site for your stay.</div>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M6 17l2-8 4 4 4-8 2 12" />
+              <path d="M3 21h18" />
+            </svg>
+          </div>
+          <div class="amenity-name">Crab Pots</div>
+          <div class="amenity-desc">Seasonal crabbing in Hood Canal. BYO bait & fishing license.</div>
+        </div>
+      </div>
+      <div class="kitchen-note reveal">
+        <div>
+          <div class="kitchen-note-label">A note on eco</div>
+          <h3>Leave it better than you found it</h3>
+          <p>Limited refrigeration on-site — plan ahead with coolers. Well water is pure and delicious straight from the
+            tap. All faucets, all sinks. Bring a refillable bottle and skip the plastic.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-section" id="gallery" style="padding: 6rem 2rem;">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="section-label">Moments</p>
+        <h2 class="section-title">What it feels<br>like to be <em>here.</em></h2>
+      </div>
+
+      <!-- Category Grid -->
+      <div class="gallery-cats">
+
+        <!-- 1. FEATURED -->
+        <a href="gallery.html?cat=the-view" class="gallery-cat">
+          <img src="imgs/main.jpg" alt="The View at YuRu" class="gallery-cat-img">
+          <div class="gallery-cat-overlay"></div>
+          <div class="gallery-cat-featured-badge">
+            <svg width="9" height="9" viewBox="0 0 9 9" fill="currentColor">
+              <circle cx="4.5" cy="4.5" r="4.5" />
+            </svg>
+            Featured
+          </div>
+          <div class="gallery-cat-info">
+            <div>
+              <p class="gallery-cat-name">Memories</p>
+              <p class="gallery-cat-count">Fun · Relaxing · Scenic</p>
+            </div>
+            <div class="gallery-cat-arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- 2. Waterfront -->
+        <a href="gallery.html?cat=waterfront" class="gallery-cat">
+          <img src="imgs/Waterfront-main.jpg" alt="Waterfront at YuRu" class="gallery-cat-img">
+          <div class="gallery-cat-overlay"></div>
+          <div class="gallery-cat-info">
+            <div>
+              <p class="gallery-cat-name">Waterfront</p>
+              <p class="gallery-cat-count">Dock · Crabbing · Kayaking</p>
+            </div>
+            <div class="gallery-cat-arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- 3. Kitchen -->
+        <a href="gallery.html?cat=kitchen" class="gallery-cat">
+          <img src="imgs/Kitchen-main.jpg" alt="Kitchen at YuRu" class="gallery-cat-img">
+          <div class="gallery-cat-overlay"></div>
+          <div class="gallery-cat-info">
+            <div>
+              <p class="gallery-cat-name">Kitchen</p>
+              <p class="gallery-cat-count">BBQ · Camp cooking · Fire pit</p>
+            </div>
+            <div class="gallery-cat-arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- 4. Activities -->
+        <a href="gallery.html?cat=activities" class="gallery-cat">
+          <img src="imgs/activities-main.jpg" alt="Activities at YuRu" class="gallery-cat-img">
+          <div class="gallery-cat-overlay"></div>
+          <div class="gallery-cat-info">
+            <div>
+              <p class="gallery-cat-name">Activities</p>
+              <p class="gallery-cat-count">Crabbing · Fishing · Kayaking</p>
+            </div>
+            <div class="gallery-cat-arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- 5. Amenities -->
+        <a href="gallery.html?cat=amenities" class="gallery-cat">
+          <img src="imgs/Fire pit.jpg" alt="Amenities at YuRu" class="gallery-cat-img">
+          <div class="gallery-cat-overlay"></div>
+          <div class="gallery-cat-info">
+            <div>
+              <p class="gallery-cat-name">Amenities</p>
+              <p class="gallery-cat-count">Fire pit · Shower · WiFi</p>
+            </div>
+            <div class="gallery-cat-arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- 6. The View — wide banner -->
+        <a href="gallery.html?cat=activities" class="gallery-cat">
+          <img src="imgs/Activities.jpg" alt="Activities at YuRu" class="gallery-cat-img"
+            style="object-position: center 60%;">
+          <div class="gallery-cat-overlay"></div>
+          <div class="gallery-cat-info">
+            <div>
+              <p class="gallery-cat-name">The View</p>
+              <p class="gallery-cat-count">Sunrise · Lake · Forest panorama</p>
+            </div>
+            <div class="gallery-cat-arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </div>
+          </div>
+        </a>
+
+      </div><!-- /gallery-cats -->
+
+      <!-- View All CTA -->
+      <div class="gallery-view-all-wrap">
+        <a href="gallery.html" class="btn-gallery-all">
+          Browse all photos
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M3 8h10M9 4l4 4-4 4" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCAL GUIDE -->
+  <section class="local" id="local">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="section-label">Local Guide</p>
+        <h2 class="section-title">Adventure is<br><em>right outside your tent</em></h2>
+        <div class="divider"></div>
+      </div>
+      <div class="local-grid reveal">
+        <div class="local-col">
+          <h3>Outdoor Activities</h3>
+          <div class="local-item">
+            <span class="local-item-name">Hood Canal (beach & water)</span>
+            <span class="local-item-dist onsite">on-site</span>
+          </div>
+          <div class="local-item">
+            <span class="local-item-name">Pleasant Harbor State Park</span>
+            <span class="local-item-dist">0.9 mi</span>
+          </div>
+          <div class="local-item">
+            <span class="local-item-name">Pleasant Harbor Marina</span>
+            <span class="local-item-dist">0.9 mi</span>
+          </div>
+          <div class="local-item">
+            <span class="local-item-name">Dosewallips State Park</span>
+            <span class="local-item-dist">1.4 mi</span>
+          </div>
+          <div class="local-item">
+            <span class="local-item-name">Rocky Brook Falls</span>
+            <span class="local-item-dist">5.0 mi</span>
+          </div>
+          <div class="local-item">
+            <span class="local-item-name">Ranger Hole Trailhead</span>
+            <span class="local-item-dist">5.5 mi</span>
+          </div>
+          <div class="local-item">
+            <span class="local-item-name">Olympic National Forest</span>
+            <span class="local-item-dist">10.5 mi</span>
+          </div>
+          <div class="local-item">
+            <span class="local-item-name">Lena Lake Trailhead</span>
+            <span class="local-item-dist">18 mi</span>
+          </div>
+          <div class="local-item">
+            <span class="local-item-name">Olympic Nat'l Park — Staircase</span>
+            <span class="local-item-dist">40 mi</span>
+          </div>
+        </div>
+        <div class="local-col">
+          <h3>Restaurants & Food</h3>
+          <div class="local-item">
+            <span class="local-item-name">Crow's Nest</span>
+            <span class="local-item-dist">0.9 mi</span>
+          </div>
+          <div class="local-item">
+            <span class="local-item-name">Geoduck Family Restaurant</span>
+            <span class="local-item-dist">0.9 mi</span>
+          </div>
+          <div class="local-item">
+            <span class="local-item-name">Halfway House Restaurant</span>
+            <span class="local-item-dist">1.6 mi</span>
+          </div>
+          <div class="local-item">
+            <span class="local-item-name">Hama Hama Oysters</span>
+            <span class="local-item-dist">12.0 mi</span>
+          </div>
+          <div style="margin-top:2rem;">
+            <h3>On-Site Recreation</h3>
+            <div class="local-item">
+              <span class="local-item-name">Beachcombing — oysters & clams</span>
+              <span class="local-item-dist onsite">on-site</span>
+            </div>
+            <div class="local-item">
+              <span class="local-item-name">Kayaking & paddleboarding</span>
+              <span class="local-item-dist onsite">on-site</span>
+            </div>
+            <div class="local-item">
+              <span class="local-item-name">Crabbing (seasonal)</span>
+              <span class="local-item-dist onsite">on-site</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GETTING HERE -->
+  <section class="getting-here" id="getting-here">
+    <div class="section-inner">
+      <div class="getting-here-grid">
+        <div class="reveal">
+          <p class="section-label">Getting Here</p>
+          <h2 class="section-title">Find your<br><em>way to calm</em></h2>
+          <div class="divider"></div>
+          <p class="address-block">115 Pleasant Harbor Rd<br>Brinnon, WA 98320</p>
+          <p style="font-size:0.87rem;color:var(--text-muted);margin-bottom:1.2rem;">From Seattle, the scenic ferry
+            routes are worth it.</p>
+          <div class="route-options">
+            <div class="route-option">
+              <span class="route-type">Ferry</span>
+              West Seattle (Fauntleroy) → Southworth
+            </div>
+            <div class="route-option">
+              <span class="route-type">Ferry</span>
+              Downtown Seattle (Pier 52) → Bainbridge
+            </div>
+            <div class="route-option">
+              <span class="route-type">Ferry</span>
+              Edmonds → Kingston
+            </div>
+            <div class="route-option">
+              <span class="route-type">Drive</span>
+              Tacoma Narrows Bridge via Gig Harbor, or I-5 via Shelton
+            </div>
+          </div>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin-top:1.2rem;font-style:italic;">Once on the
+            Peninsula: US-101 → Brinnon → Pleasant Harbor Rd. Third property on the right.</p>
+        </div>
+        <div class="reveal">
+          <div class="map-placeholder">
+            <div class="map-pin"></div>
+            <div class="map-label">YuRu · Brinnon, WA</div>
+          </div>
+          <p style="font-size:0.78rem;color:var(--text-muted);margin-top:0.75rem;text-align:center;">Parking on the west
+            side of Pleasant Harbor Rd. Golf cart shuttles you to your tent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="reviews">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="section-label">Guest Reviews</p>
+        <h2 class="section-title">Fully<br><em>yuru'd</em></h2>
+        <div class="divider"></div>
+      </div>
+      <div class="reviews-grid reveal">
+        <div class="review-card">
+          <div class="review-stars">★ ★ ★ ★ ★</div>
+          <p class="review-quote">"Came for the glamping, left completely yuru'd — 10/10 would totally chill here
+            again."</p>
+          <div class="review-source">Verified Guest</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★ ★ ★ ★ ★</div>
+          <p class="review-quote">"Somewhere between the salty breezes and hammock snoozes, I hit peak yuru — part sea
+            sprite, part professional lounger."</p>
+          <div class="review-source">Verified Guest</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★ ★ ★ ★ ★</div>
+          <p class="review-quote">"Fully yuru'd — zen'd out and loving it. The private beach access made the whole
+            trip."</p>
+          <div class="review-source">Verified Guest</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT TO PACK -->
+  <section class="pack" id="pack">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="section-label">Before You Arrive</p>
+        <h2 class="section-title">What to<br><em>pack</em></h2>
+        <div class="divider"></div>
+      </div>
+      <div class="pack-grid reveal">
+        <div class="pack-col must">
+          <h3>Must Have</h3>
+          <div class="pack-items">
+            <div class="pack-item">
+              <div class="pack-dot"></div>Tent (or pre-arrange to use ours)
+            </div>
+            <div class="pack-item">
+              <div class="pack-dot"></div>Bedding, sleeping bag & pillow
+            </div>
+            <div class="pack-item">
+              <div class="pack-dot"></div>Camp chair & flashlight or headlamp
+            </div>
+            <div class="pack-item">
+              <div class="pack-dot"></div>Refillable water bottle
+            </div>
+            <div class="pack-item">
+              <div class="pack-dot"></div>Crabbing / fishing license
+            </div>
+            <div class="pack-item">
+              <div class="pack-dot"></div>Layers for cool mornings & evenings
+            </div>
+            <div class="pack-item">
+              <div class="pack-dot"></div>Quick-dry bath towel
+            </div>
+            <div class="pack-item">
+              <div class="pack-dot"></div>Sturdy water shoes — sharp oyster shells!
+            </div>
+            <div class="pack-item">
+              <div class="pack-dot"></div>Charcoal, biodegradable dish soap, food & drinks
+            </div>
+          </div>
+        </div>
+        <div class="pack-col nice">
+          <h3>Nice to Have</h3>
+          <div class="pack-items">
+            <div class="pack-item">
+              <div class="pack-dot"></div>Portable battery pack
+            </div>
+            <div class="pack-item">
+              <div class="pack-dot"></div>Rain boots for beach wading
+            </div>
+            <div class="pack-item">
+              <div class="pack-dot"></div>Eco-friendly sunscreen, hat, sunglasses
+            </div>
+            <div class="pack-item">
+              <div class="pack-dot"></div>Swimsuit
+            </div>
+            <div class="pack-item">
+              <div class="pack-dot"></div>Board games, cards, or a good book
+            </div>
+            <div class="pack-item">
+              <div class="pack-dot"></div>Camera or binoculars for wildlife
+            </div>
+            <div class="pack-item">
+              <div class="pack-dot"></div>Gloves, shovels, rakes & bucket for clamming
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="mission-section" id="mission">
+    <div class="section-inner">
+      <p class="section-label">Why we exist</p>
+      <h2 class="section-title">Every stay<br>funds a <em>future.</em></h2>
+      <div class="divider"></div>
+
+      <p class="mission-body">
+        YuRu was built with a single purpose: every dollar you pay for a stay goes directly to the
+        Đức Foundation — a scholarship fund supporting Vietnamese students in their pursuit of education.
+      </p>
+
+      <div class="mission-pull-quote">
+        <blockquote>
+          "We believe a night under the stars should mean something beyond the stay itself."
+        </blockquote>
+        <cite>— YuRu, Hood Canal</cite>
+      </div>
+
+      <p class="mission-body">
+        We keep the operation simple and personal so that nothing gets lost between your booking
+        and a student's opportunity. No overhead. No middleman. Just camping and scholarships.
+      </p>
+
+      <div class="mission-values">
+        <div class="mission-value-pill">
+          <span class="mission-value-pill-icon">🌿</span>
+          100% proceeds donated
+        </div>
+        <div class="mission-value-pill">
+          <span class="mission-value-pill-icon">📚</span>
+          Vietnamese student scholarships
+        </div>
+        <div class="mission-value-pill">
+          <span class="mission-value-pill-icon">🤲</span>
+          No overhead · No middleman
+        </div>
+      </div>
+
+      <div class="duc-logo-area">
+        <div class="duc-badge"><img src="imgs/Duc Logo Profile Yellow.jpg" alt="Đức Foundation"></div>
+        <div class="duc-info">
+          <p><a href="https://ducfoundation.org/" target="_blank" style="color:inherit;text-decoration:none;">Đức
+              Foundation</a></p>
+          <p>Scholarships for Vietnamese students · 100% of YuRu proceeds donated</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING CTA -->
+  <section class="booking-cta" id="book">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="section-label">Reserve Your Retreat</p>
+        <h2 class="section-title">Ready to get<br><em>yuru'd?</em></h2>
+        <div class="divider"></div>
+        <p>Reach out to Linh & Trang to check availability and book your stay at Hood Canal's most carefree corner.</p>
+        <div class="hero-btns" style="margin-bottom:1.5rem;">
+          <a href="mailto:Hello@HeyYuRu.com" class="btn-primary">Email to Book</a>
+          <a href="tel:2064461291" class="btn-ghost">206.446.1291</a>
+        </div>
+        <div class="contact-chips">
+          <a href="https://heyyuru.com" class="contact-chip">🌐 HeyYuRu.com</a>
+          <a href="#" class="contact-chip">📘 Hey.YuRu</a>
+          <a href="#" class="contact-chip">📷 @Hey.YuRu</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">ゆる YuRu</div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#amenities">Amenities</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#local">Local Guide</a>
+      <a href="#getting-here">Getting Here</a>
+      <a href="#mission">Our Mission</a>
+      <a href="#book">Book</a>
+    </div>
+    <p>115 Pleasant Harbor Rd · Brinnon, WA 98320 · Hood Canal</p>
+    <p style="margin-top:0.5rem;font-size:0.72rem;opacity:0.4;">© 2025 YuRu. All rights reserved.</p>
+  </footer>
+
+  <script>
+    /* No active scripts */
+  </script>
+</body>
+
+</html>

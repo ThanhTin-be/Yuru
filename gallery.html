@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — Hey Yuru </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bark: #2A2620;
+      --stone: #5C5850;
+      --stone-light: #8C8880;
+      --moss: #3A6B10;
+      --moss-light: #4E8F18;
+      --sage: #E8F0DC;
+      --amber: #B87316;
+      --amber-light: #F0C060;
+      --parchment: #F0EDE4;
+      --cream: #FAF8F3;
+      --border: rgba(42, 38, 32, 0.12);
+      --gutter: clamp(20px, 5vw, 72px);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0e0f0b;
+      color: #fff;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ─── TOP BAR ─────────────────────────────────── */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--gutter);
+      background: rgba(14, 15, 11, 0.82);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .top-bar-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .top-bar-logo img {
+      height: 32px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+
+    .top-bar-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 40px;
+      font-size: 12.5px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.65);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .top-bar-back:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .top-bar-back svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* ─── HERO ───────────────────────────────────── */
+    .gallery-hero {
+      position: relative;
+      height: 52vh;
+      min-height: 320px;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 var(--gutter) 52px;
+      overflow: hidden;
+      margin-top: 68px;
+    }
+
+    .gallery-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #1a2010 0%, #0e1208 50%, #1c1a14 100%);
+    }
+
+    .gallery-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.45;
+      filter: brightness(0.6) saturate(0.7);
+    }
+
+    .gallery-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,
+          rgba(14, 15, 11, 0.5) 0%,
+          rgba(14, 15, 11, 0.1) 30%,
+          rgba(14, 15, 11, 0.65) 75%,
+          rgba(14, 15, 11, 0.95) 100%);
+    }
+
+    .gallery-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+
+    .gallery-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--amber-light);
+      margin-bottom: 14px;
+      opacity: 0.8;
+    }
+
+    .gallery-hero-eyebrow::before {
+      content: '✦';
+      font-size: 8px;
+    }
+
+    .gallery-hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 5vw, 64px);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    .gallery-hero-title em {
+      font-style: italic;
+      color: var(--amber-light);
+    }
+
+    /* ─── FILTER TABS ────────────────────────────── */
+    .filter-bar {
+      position: sticky;
+      top: 68px;
+      z-index: 90;
+      background: rgba(14, 15, 11, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 0 var(--gutter);
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .filter-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 18px 20px;
+      font-size: 12.5px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.42);
+      border: none;
+      background: none;
+      cursor: pointer;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      position: relative;
+    }
+
+    .filter-tab:hover {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .filter-tab.active {
+      color: #fff;
+      border-bottom-color: var(--amber-light);
+    }
+
+    .filter-tab-count {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.4);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .filter-tab.active .filter-tab-count {
+      background: rgba(240, 192, 96, 0.15);
+      color: var(--amber-light);
+    }
+
+    /* ─── GALLERY BODY ───────────────────────────── */
+    .gallery-body {
+      padding: 40px var(--gutter) 80px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Category title row */
+    .cat-section {
+      margin-bottom: 56px;
+    }
+
+    .cat-section[data-cat].hidden {
+      display: none;
+    }
+
+    .cat-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .cat-header-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      color: #fff;
+    }
+
+    .cat-header-name em {
+      font-style: italic;
+      color: var(--amber-light);
+    }
+
+    .cat-header-count {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.3);
+      letter-spacing: 0.08em;
+    }
+
+    /* Masonry photo grid */
+    .photo-masonry {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    /* Featured image gets double width */
+    .photo-item.featured {
+      grid-column: span 2;
+    }
+
+    .photo-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: zoom-in;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      aspect-ratio: 4/3;
+      isolation: isolate;
+    }
+
+    .photo-item.featured {
+      aspect-ratio: 16/9;
+    }
+
+    .photo-item.tall {
+      aspect-ratio: 3/4;
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s;
+      filter: brightness(0.9);
+    }
+
+    .photo-item:hover img {
+      transform: scale(1.05);
+      filter: brightness(0.75);
+    }
+
+    .photo-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 12, 8, 0.72) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+
+    .photo-item:hover .photo-item-overlay {
+      opacity: 1;
+    }
+
+    .photo-item-label {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      right: 14px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .photo-item:hover .photo-item-label {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .photo-item-zoom {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.7);
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .photo-item:hover .photo-item-zoom {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .photo-item-zoom svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* ─── EMPTY PLACEHOLDER ──────────────────────── */
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 180px;
+      background: linear-gradient(135deg, #1a1c14 0%, #242618 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: inherit;
+    }
+
+    .photo-placeholder svg {
+      width: 28px;
+      height: 28px;
+      color: rgba(255, 255, 255, 0.1);
+    }
+
+    .photo-placeholder span {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.15);
+    }
+
+    /* ─── LIGHTBOX ───────────────────────────────── */
+    .lb {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(5, 6, 4, 0.96);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .lb.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .lb-img-wrap {
+      position: relative;
+      max-width: 92vw;
+      max-height: 88vh;
+    }
+
+    .lb-img {
+      max-width: 92vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 6px;
+      display: block;
+      transform: scale(0.95);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .lb.open .lb-img {
+      transform: scale(1);
+    }
+
+    .lb-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 28px;
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.2s, color 0.2s;
+      z-index: 10;
+    }
+
+    .lb-close:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+
+    .lb-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 22px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .lb-nav:hover {
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff;
+    }
+
+    .lb-prev {
+      left: -72px;
+    }
+
+    .lb-next {
+      right: -72px;
+    }
+
+    .lb-caption {
+      position: absolute;
+      bottom: -36px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.35);
+      white-space: nowrap;
+    }
+
+    .lb-counter {
+      position: absolute;
+      top: 20px;
+      left: 24px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.3);
+      letter-spacing: 0.1em;
+    }
+
+    /* ─── FOOTER MINI ───────────────────────────── */
+    .mini-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 28px var(--gutter);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    .mini-footer a {
+      color: rgba(255, 255, 255, 0.35);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .mini-footer a:hover {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* ─── RESPONSIVE ───────────────────────────── */
+    @media (max-width: 900px) {
+      .photo-masonry {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .photo-item.featured {
+        grid-column: span 2;
+      }
+
+      .lb-prev {
+        left: -52px;
+      }
+
+      .lb-next {
+        right: -52px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .photo-masonry {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .lb-prev,
+      .lb-nav {
+        width: 40px;
+        height: 40px;
+      }
+
+      .lb-prev {
+        left: -44px;
+      }
+
+      .lb-next {
+        right: -44px;
+      }
+    }
+
+    /* ─── ANIMATIONS ───────────────────────────── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .cat-section {
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .photo-item {
+      animation: fadeUp 0.5s ease both;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <a href="yuru_website_mockup.html" class="top-bar-logo">
+      <img src="imgs/Yuru Logo Characters Only.png" alt="Yuru">
+    </a>
+    <a href="yuru_website_mockup.html#gallery" class="top-bar-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M13 8H3M7 4L3 8l4 4" />
+      </svg>
+      Back to site
+    </a>
+  </header>
+
+  <!-- HERO -->
+  <div class="gallery-hero">
+    <div class="gallery-hero-bg">
+      <img src="imgs/The view-main.jpg" alt="Yuru Gallery">
+    </div>
+    <div class="gallery-hero-overlay"></div>
+    <div class="gallery-hero-content">
+      <p class="gallery-hero-eyebrow">Yuru · Hood Canal, Washington</p>
+      <h1 class="gallery-hero-title">Every moment,<br><em>captured.</em></h1>
+    </div>
+  </div>
+
+  <!-- FILTER TABS -->
+  <div class="filter-bar">
+    <div class="filter-tabs" role="tablist">
+      <button class="filter-tab active" data-filter="all" role="tab">
+        All photos <span class="filter-tab-count" id="count-all">—</span>
+      </button>
+      <button class="filter-tab" data-filter="the-view" role="tab">
+        The View <span class="filter-tab-count" id="count-the-view">—</span>
+      </button>
+      <button class="filter-tab" data-filter="activities" role="tab">
+        Activities <span class="filter-tab-count" id="count-activities">—</span>
+      </button>
+      <button class="filter-tab" data-filter="waterfront" role="tab">
+        Waterfront <span class="filter-tab-count" id="count-waterfront">—</span>
+      </button>
+      <button class="filter-tab" data-filter="kitchen" role="tab">
+        Kitchen <span class="filter-tab-count" id="count-kitchen">—</span>
+      </button>
+      <button class="filter-tab" data-filter="tent-sites" role="tab">
+        Tent Sites <span class="filter-tab-count" id="count-tent-sites">—</span>
+      </button>
+      <button class="filter-tab" data-filter="amenities" role="tab">
+        Amenities <span class="filter-tab-count" id="count-amenities">—</span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- GALLERY BODY -->
+  <main class="gallery-body">
+
+    <!-- ── THE VIEW ─────────────────────────────── -->
+    <section class="cat-section" data-cat="the-view">
+      <div class="cat-header">
+        <h2 class="cat-header-name">The <em>View</em></h2>
+        <span class="cat-header-count">Sunrise · Lake · Forest panorama</span>
+      </div>
+      <div class="photo-masonry">
+        <div class="photo-item featured" onclick="openLb(this)" data-caption="The View — Main">
+          <img src="imgs/The view-main.jpg" alt="The View — Main" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">The View — Main</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="The View (2)">
+          <img src="imgs/The view (2).JPG" alt="The view 2" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">The View (2)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="The View (3)">
+          <img src="imgs/The view (3).JPG" alt="The view 3" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">The View (3)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="The View (4)">
+          <img src="imgs/The view (4).webp" alt="The view 4" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">The View (4)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="The View (5)">
+          <img src="imgs/The view (5).webp" alt="The view 5" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">The View (5)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="The View">
+          <img src="imgs/The view.webp" alt="The view" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">The View</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+
+        <div class="photo-item" onclick="openLb(this)" data-caption="Brinnon — Lost Ship Under the Stars">
+          <img src="imgs/Brinnon Lost Ship Under The Stars.webp" alt="Under the stars" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Lost Ship Under the Stars</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ACTIVITIES ─────────────────────────────── -->
+    <section class="cat-section" data-cat="activities">
+      <div class="cat-header">
+        <h2 class="cat-header-name"><em>Activities</em></h2>
+        <span class="cat-header-count">Crabbing · Fishing · Kayaking · Stargazing</span>
+      </div>
+      <div class="photo-masonry">
+        <div class="photo-item featured" onclick="openLb(this)" data-caption="Activities — Main">
+          <img src="imgs/activities-main.jpg" alt="Activities main" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Activities — Main</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Activities (2)">
+          <img src="imgs/Activities (2).jpg" alt="Activities 2" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Activities (2)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Activities (3)">
+          <img src="imgs/Activities (3).jpg" alt="Activities 3" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Activities (3)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Activities (5)">
+          <img src="imgs/Activities (5).jpg" alt="Activities 5" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Activities (5)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Activities (6)">
+          <img src="imgs/Activities (6).jpg" alt="Activities 6" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Activities (6)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Activities (7)">
+          <img src="imgs/Activities (7).jpg" alt="Activities 7" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Activities (7)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Activities (8)">
+          <img src="imgs/Activities (8).jpg" alt="Activities 8" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Activities (8)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Activities (9)">
+          <img src="imgs/Activities (9).jpg" alt="Activities 9" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Activities (9)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Activities (10)">
+          <img src="imgs/Activities (10).jpg" alt="Activities 10" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Activities (10)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Activities (2) alt">
+          <img src="imgs/Activities (2).jpg" alt="Activities alt 2" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Activities (2) alt</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Activities (3) alt">
+          <img src="imgs/Activities (3).jpg" alt="Activities alt 3" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Main activity</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Activities (4) alt">
+          <img src="imgs/Activities (4).jpg" alt="Activities alt 4" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Activities (4)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WATERFRONT ────────────────────────────── -->
+    <section class="cat-section" data-cat="waterfront">
+      <div class="cat-header">
+        <h2 class="cat-header-name"><em>Waterfront</em></h2>
+        <span class="cat-header-count">Dock · Crabbing · Kayaking</span>
+      </div>
+      <div class="photo-masonry">
+        <div class="photo-item featured" onclick="openLb(this)" data-caption="Waterfront — Main">
+          <img src="imgs/Waterfront-main.jpg" alt="Waterfront Main" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Waterfront — Main</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Waterfront (2)">
+          <img src="imgs/Waterfront (2).jpg" alt="Waterfront 2" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Waterfront (2)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Waterfront (3)">
+          <img src="imgs/Waterfront (3).jpg" alt="Waterfront 3" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Waterfront (3)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Waterfront (4)">
+          <img src="imgs/Waterfront (4).jpg" alt="Waterfront 4" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Waterfront (4)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Sunrise at the waterfront">
+          <img src="imgs/Sunrise (waterfront).jpg" alt="Sunrise" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Sunrise at the waterfront</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Waterfront (5)">
+          <img src="imgs/Waterfront (5).jpg" alt="Waterfront 5" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Waterfront (5)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Waterfront">
+          <img src="imgs/Waterfront.jpg" alt="Waterfront" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Waterfront</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── KITCHEN ────────────────────────────────── -->
+    <section class="cat-section" data-cat="kitchen">
+      <div class="cat-header">
+        <h2 class="cat-header-name"><em>Kitchen</em></h2>
+        <span class="cat-header-count">BBQ · Camp cooking </span>
+      </div>
+      <div class="photo-masonry">
+        <div class="photo-item featured" onclick="openLb(this)" data-caption="Kitchen — Main">
+          <img src="imgs/Kitchen-main.jpg" alt="Kitchen Main" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Kitchen — Main</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Kitchen (2)">
+          <img src="imgs/Kitchen (2).jpg" alt="Kitchen 2" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Kitchen (2)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Kitchen (3)">
+          <img src="imgs/Kitchen (3).jpg" alt="Kitchen 3" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Kitchen (3)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Kitchen">
+          <img src="imgs/Kitchen.jpg" alt="Kitchen" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Kitchen</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Kitchen (2) alt">
+          <img src="imgs/Kitchen (2).webp" alt="Kitchen 2 webp" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Kitchen (alt)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── TENT SITES ─────────────────────────────── -->
+    <section class="cat-section" data-cat="tent-sites">
+      <div class="cat-header">
+        <h2 class="cat-header-name">Tent <em>Sites</em></h2>
+        <span class="cat-header-count">Up to 3 tents · Private clearing</span>
+      </div>
+      <div class="photo-masonry">
+        <div class="photo-item featured" onclick="openLb(this)" data-caption="Tent Site — Main">
+          <img src="imgs/Tent.jpg" alt="Tent Main" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Tent Site — Main</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Tent (2)">
+          <img src="imgs/Tent (2).jpg" alt="Tent 2" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Tent (2)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Tent (3)">
+          <img src="imgs/Tent (3).jpg" alt="Tent 3" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Tent (3)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Tent (4)">
+          <img src="imgs/Tent (4).jpg" alt="Tent 4" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Tent (4)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+
+        <!-- Cabin/Airstream placeholder -->
+        <div class="photo-item">
+          <div class="photo-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+            <span>Cabin · Coming soon</span>
+          </div>
+        </div>
+        <div class="photo-item">
+          <div class="photo-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+              <rect x="1" y="7" width="22" height="12" rx="2" />
+              <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
+              <circle cx="6" cy="19" r="2" />
+              <circle cx="18" cy="19" r="2" />
+            </svg>
+            <span>Airstream · Coming soon</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── AMENITIES ──────────────────────────────── -->
+    <section class="cat-section" data-cat="amenities">
+      <div class="cat-header">
+        <h2 class="cat-header-name"><em>Amenities</em></h2>
+        <span class="cat-header-count">Fire pit · Shower · WiFi · Lighting</span>
+      </div>
+      <div class="photo-masonry">
+        <div class="photo-item featured" onclick="openLb(this)" data-caption="Fire Pit — Amenity">
+          <img src="imgs/Fire pit.jpg" alt="Fire pit" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Fire Pit main</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Fire pit">
+          <img src="imgs/Fire pit .webp" alt="Fire pit webp" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Fire Pit (alt)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Kitchen amenities">
+          <img src="imgs/Kitchen (2).webp" alt="Kitchen amenities" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Camp Kitchen</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <div class="photo-item" onclick="openLb(this)" data-caption="Fire pit (2)">
+          <img src="imgs/Fire pit .jpg" alt="Fire pit 2" loading="lazy">
+          <div class="photo-item-overlay"></div>
+          <p class="photo-item-label">Fire Pit (2)</p>
+          <div class="photo-item-zoom"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="6.5" cy="6.5" r="4" />
+              <path d="M11 11l3 3" />
+            </svg></div>
+        </div>
+        <!-- Placeholders for future amenity photos -->
+        <div class="photo-item">
+          <div class="photo-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+              <path d="M4 4h16v2a4 4 0 01-4 4H8a4 4 0 01-4-4V4z" />
+              <path d="M12 14v6m-4 0h8" />
+            </svg>
+            <span>Shower · Photo coming</span>
+          </div>
+        </div>
+        <div class="photo-item">
+          <div class="photo-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <path d="M8 21h8m-4-4v4" />
+            </svg>
+            <span>Lighting · Photo coming</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lb" id="lb" onclick="lbOutside(event)">
+    <button class="lb-close" onclick="closeLb()">✕</button>
+    <p class="lb-counter" id="lb-counter"></p>
+    <div class="lb-img-wrap">
+      <button class="lb-nav lb-prev" onclick="lbNav(-1)">&#8249;</button>
+      <img class="lb-img" id="lb-img" src="" alt="">
+      <button class="lb-nav lb-next" onclick="lbNav(1)">&#8250;</button>
+      <p class="lb-caption" id="lb-caption"></p>
+    </div>
+  </div>
+
+  <!-- MINI FOOTER -->
+  <footer class="mini-footer">
+    <span>© 2025 Yuru · Hood Canal, Washington</span>
+    <a href="yuru_website_mockup.html">Back to home →</a>
+  </footer>
+
+  <script>
+    // ── FILTER LOGIC ──────────────────────────────────
+    const tabs = document.querySelectorAll('.filter-tab');
+    const sections = document.querySelectorAll('.cat-section[data-cat]');
+
+    // Count photos per cat
+    sections.forEach(sec => {
+      const cat = sec.dataset.cat;
+      const count = sec.querySelectorAll('.photo-item:not(:has(.photo-placeholder))').length;
+      const el = document.getElementById('count-' + cat);
+      if (el) el.textContent = count;
+    });
+    // Total
+    const totalEl = document.getElementById('count-all');
+    if (totalEl) {
+      let t = 0;
+      sections.forEach(s => t += s.querySelectorAll('.photo-item:not(:has(.photo-placeholder))').length);
+      totalEl.textContent = t;
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const f = tab.dataset.filter;
+        sections.forEach(sec => {
+          if (f === 'all' || sec.dataset.cat === f) {
+            sec.classList.remove('hidden');
+          } else {
+            sec.classList.add('hidden');
+          }
+        });
+        window.scrollTo({ top: document.querySelector('.filter-bar').offsetTop - 10, behavior: 'smooth' });
+      });
+    });
+
+    // Auto-select from URL ?cat=
+    const urlCat = new URLSearchParams(location.search).get('cat');
+    if (urlCat) {
+      const matchTab = document.querySelector(`.filter-tab[data-filter="${urlCat}"]`);
+      if (matchTab) matchTab.click();
+    }
+
+    // ── LIGHTBOX ──────────────────────────────────────
+    let lbItems = [];
+    let lbIdx = 0;
+
+    function buildLbItems() {
+      // Only from visible sections
+      lbItems = [];
+      document.querySelectorAll('.cat-section:not(.hidden) .photo-item:not(:has(.photo-placeholder))').forEach(el => {
+        const img = el.querySelector('img');
+        const cap = el.dataset.caption || '';
+        if (img) lbItems.push({ src: img.src, caption: cap });
+      });
+    }
+
+    function openLb(el) {
+      buildLbItems();
+      const img = el.querySelector('img');
+      if (!img) return;
+      lbIdx = lbItems.findIndex(i => i.src === img.src);
+      if (lbIdx < 0) lbIdx = 0;
+      renderLb();
+      document.getElementById('lb').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function renderLb() {
+      const item = lbItems[lbIdx];
+      if (!item) return;
+      document.getElementById('lb-img').src = item.src;
+      document.getElementById('lb-caption').textContent = item.caption;
+      document.getElementById('lb-counter').textContent = `${lbIdx + 1} / ${lbItems.length}`;
+    }
+
+    function closeLb() {
+      document.getElementById('lb').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function lbNav(dir) {
+      lbIdx = (lbIdx + dir + lbItems.length) % lbItems.length;
+      const img = document.getElementById('lb-img');
+      img.style.opacity = '0';
+      img.style.transform = 'scale(0.97)';
+      setTimeout(() => {
+        renderLb();
+        img.style.opacity = '1';
+        img.style.transform = 'scale(1)';
+      }, 140);
+    }
+
+    document.getElementById('lb-img').style.transition = 'opacity 0.15s ease, transform 0.15s ease';
+
+    function lbOutside(e) {
+      if (e.target === document.getElementById('lb')) closeLb();
+    }
+
+    document.addEventListener('keydown', e => {
+      const lb = document.getElementById('lb');
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLb();
+      if (e.key === 'ArrowRight') lbNav(1);
+      if (e.key === 'ArrowLeft') lbNav(-1);
+    });
+
+    // ── STAGGER ANIMATION ─────────────────────────────
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const items = e.target.querySelectorAll('.photo-item');
+          items.forEach((item, i) => {
+            item.style.animationDelay = `${i * 0.05}s`;
+          });
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.05 });
+
+    document.querySelectorAll('.photo-masonry').forEach(m => observer.observe(m));
+  </script>
+</body>
+
+</html>

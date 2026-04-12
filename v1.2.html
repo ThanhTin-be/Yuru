@@ -1,0 +1,3396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YuRu — A Private Retreat in Hood Canal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --nav-height: 81px;
+      --page-gutter: clamp(24px, 6vw, 80px);
+      --section-space: 100px;
+      --content-width: 1180px;
+      --content-narrow: 760px;
+      --parchment: #F0EDE4;
+      --bark: #2A2620;
+      --stone: #5C5850;
+      --stone-light: #8C8880;
+      --moss: #3A6B10;
+      --moss-light: #4E8F18;
+      --sage: #E8F0DC;
+      --amber: #B87316;
+      --amber-light: #F0C060;
+      --cream: #FAF8F3;
+      --border: rgba(42, 38, 32, 0.12);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--parchment);
+      color: var(--bark);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px var(--page-gutter);
+      background: rgba(240, 237, 228, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      display: block;
+      width: auto;
+      height: clamp(34px, 3vw, 44px);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--stone);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--bark);
+    }
+
+    .nav-cta {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--cream) !important;
+      background: var(--moss);
+      padding: 8px 20px;
+      border-radius: 40px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--moss-light) !important;
+      color: var(--cream) !important;
+    }
+
+    /* ─── HERO ────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(to bottom, rgba(44, 74, 41, 0.28) 0%, rgba(42, 42, 36, 0.52) 100%),
+        url('imgs/The view (3).JPG') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .hero-kicker {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(244, 239, 228, 0.75);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      animation: heroFadeUp 0.8s ease both;
+    }
+
+    #hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 8vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--cream);
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+      animation: heroFadeUp 0.9s 0.15s ease both;
+    }
+
+    #hero h1 em {
+      font-style: italic;
+      color: var(--amber-light);
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      color: rgba(244, 239, 228, 0.8);
+      max-width: 420px;
+      letter-spacing: 0.04em;
+      animation: heroFadeUp 1s 0.3s ease both;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-tagline strong {
+      font-weight: 400;
+      color: var(--amber-light);
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: heroFadeUp 1s 0.45s ease both;
+    }
+
+    .btn-primary {
+      background: var(--moss);
+      color: var(--cream);
+      padding: 0.85rem 2.2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 400;
+      transition: background 0.2s, transform 0.2s;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      background: var(--moss-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--cream);
+      padding: 0.85rem 2.2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 400;
+      border: 1px solid rgba(244, 239, 228, 0.45);
+      transition: border-color 0.2s, transform 0.2s;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(244, 239, 228, 0.85);
+      transform: translateY(-1px);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      animation: heroFadeUp 1s 0.7s ease both;
+    }
+
+    .hero-scroll span {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(244, 239, 228, 0.55);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: rgba(244, 239, 228, 0.35);
+      animation: scrollLinePulse 2s ease infinite;
+    }
+
+    @keyframes heroFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scrollLinePulse {
+
+      0%,
+      100% {
+        opacity: 0.3;
+        transform: scaleY(1);
+      }
+
+      50% {
+        opacity: 0.8;
+        transform: scaleY(0.6);
+        transform-origin: top;
+      }
+    }
+
+    /* ─── SECTION SHARED ────────────────────────── */
+    section {
+      padding: var(--section-space) var(--page-gutter);
+    }
+
+    .section-shell {
+      width: min(100%, var(--content-width));
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--stone-light);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 3.5vw, 52px);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--bark);
+      margin-bottom: 20px;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--moss);
+    }
+
+    .section-body {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--stone);
+      max-width: 560px;
+    }
+
+    /* ─── ABOUT SPOT ────────────────────────────── */
+    #spot {
+      background: var(--cream);
+      min-height: calc(100svh - var(--nav-height));
+      padding: 40px var(--page-gutter);
+      display: flex;
+      align-items: stretch;
+    }
+
+    .spot-shell {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      min-height: calc(100svh - var(--nav-height) - 80px);
+    }
+
+    .spot-shell>div:first-child {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .spot-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .feature-card {
+      padding: 16px;
+      background: var(--parchment);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .feature-icon {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .feature-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--bark);
+      margin-bottom: 4px;
+    }
+
+    .feature-desc {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--stone);
+      line-height: 1.45;
+    }
+
+    .spot-visual {
+      border-radius: 20px;
+      overflow: hidden;
+      height: 100%;
+      max-height: calc(100svh - var(--nav-height) - 80px);
+      position: relative;
+    }
+
+    .spot-visual-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 440px;
+      background: linear-gradient(180deg, #7AA050 0%, #4A7028 40%, #2E4818 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .spot-tag-overlay {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      background: rgba(240, 237, 228, 0.92);
+      backdrop-filter: blur(8px);
+      border-radius: 10px;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+    }
+
+    .spot-tag-overlay p:first-child {
+      font-size: 11px;
+      color: var(--stone-light);
+      letter-spacing: 0.06em;
+    }
+
+    .spot-tag-overlay p:last-child {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--bark);
+    }
+
+    /* ─── AMENITIES (mockup style) ──────────────── */
+    #amenities {
+      background: var(--cream);
+    }
+
+    .amenities-header {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .amenity-card {
+      background: var(--parchment);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: background 0.2s;
+    }
+
+    .amenity-card:hover {
+      background: var(--cream);
+    }
+
+    .amenity-icon {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .amenity-icon svg {
+      width: 15px;
+      height: 15px;
+      stroke: var(--moss);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .amenity-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--bark);
+    }
+
+    .amenity-desc {
+      font-size: 0.82rem;
+      color: var(--stone);
+      line-height: 1.55;
+      font-weight: 300;
+    }
+
+    .kitchen-note {
+      margin-top: 2.5rem;
+      background: var(--moss);
+      color: var(--cream);
+      padding: 2rem 2.5rem;
+      border-radius: 4px;
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .kitchen-note-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .kitchen-note h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .kitchen-note p {
+      font-size: 0.87rem;
+      opacity: 0.85;
+      max-width: 480px;
+      font-weight: 300;
+    }
+
+    /* ─── MAP ───────────────────────────────────── */
+    #map {}
+
+    .map-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 40px;
+    }
+
+    .map-embed {
+      width: 100%;
+      height: 420px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      background: #E8F0DC;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .map-embed iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .map-pin-info {
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .map-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--moss);
+      flex-shrink: 0;
+    }
+
+    .map-address {
+      font-size: 13px;
+      color: var(--stone);
+      font-weight: 300;
+    }
+
+    /* ─── CINEMATIC VIDEO ───────────────────────── */
+    #cinematic {
+      position: relative;
+      width: 100%;
+      height: 85vh;
+      min-height: 480px;
+      overflow: hidden;
+      background: #0a0a08;
+    }
+
+    .cinematic-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+    }
+
+    .cinematic-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(10, 10, 8, 0.55) 0%, rgba(10, 10, 8, 0.15) 40%, rgba(10, 10, 8, 0.5) 100%),
+        linear-gradient(to right, rgba(10, 10, 8, 0.4) 0%, transparent 50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .cinematic-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 20px;
+    }
+
+    .cinematic-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5vw, 68px);
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.12;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .cinematic-title em {
+      font-style: italic;
+      color: var(--amber-light);
+    }
+
+    .cinematic-sub {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.55);
+      max-width: 420px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .cinematic-play {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .cinematic-play:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.6);
+      transform: scale(1.08);
+    }
+
+    .cinematic-play svg {
+      width: 22px;
+      height: 22px;
+      margin-left: 3px;
+    }
+
+    .cinematic-scroll-hint {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      animation: scrollHintBounce 2s ease infinite;
+    }
+
+    @keyframes scrollHintBounce {
+
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(6px);
+      }
+    }
+
+    /* ─── GALLERY ───────────────────────────────── */
+    #gallery {
+      background: var(--bark);
+    }
+
+    #gallery .section-tag {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    #gallery .section-title {
+      color: var(--cream);
+    }
+
+    #gallery .section-title em {
+      color: var(--amber-light);
+    }
+
+    /* ─── GALLERY CATEGORIES ───────────────────────── */
+    .gallery-cats {
+      margin: 56px 0 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 340px 280px;
+      gap: 14px;
+    }
+
+    /* Featured (first) card takes 2 columns */
+    .gallery-cat:nth-child(1) {
+      grid-column: 1 / 3;
+      grid-row: 1 / 2;
+    }
+
+    .gallery-cat:nth-child(2) {
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+    }
+
+    .gallery-cat:nth-child(3) {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+    }
+
+    .gallery-cat:nth-child(4) {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+    }
+
+    .gallery-cat:nth-child(5) {
+      grid-column: 3 / 4;
+      grid-row: 2 / 3;
+    }
+
+    /* 6th card spans bottom on its own row */
+    .gallery-cat:nth-child(6) {
+      grid-column: 1 / 4;
+      grid-row: 3 / 4;
+      height: 300px;
+    }
+
+    .gallery-cat {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(30, 32, 24, 0.8);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+      isolation: isolate;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s;
+      text-decoration: none;
+      display: block;
+    }
+
+    .gallery-cat:hover {
+      transform: translateY(-4px) scale(1.005);
+      box-shadow: 0 36px 72px rgba(0, 0, 0, 0.38);
+    }
+
+    .gallery-cat-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      filter: brightness(0.78);
+    }
+
+    .gallery-cat:hover .gallery-cat-img {
+      transform: scale(1.06);
+      filter: brightness(0.65);
+    }
+
+    /* Empty placeholder when no img */
+    .gallery-cat-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1e2216 0%, #2e3820 50%, #1a1c14 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-cat-placeholder svg {
+      width: 40px;
+      height: 40px;
+      color: rgba(255, 255, 255, 0.12);
+    }
+
+    .gallery-cat-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top,
+          rgba(10, 12, 8, 0.85) 0%,
+          rgba(10, 12, 8, 0.3) 45%,
+          transparent 70%);
+      transition: background 0.35s;
+    }
+
+    .gallery-cat:hover .gallery-cat-overlay {
+      background: linear-gradient(to top,
+          rgba(10, 12, 8, 0.9) 0%,
+          rgba(10, 12, 8, 0.45) 50%,
+          rgba(10, 12, 8, 0.1) 80%);
+    }
+
+    /* "Featured" badge on first card */
+    .gallery-cat-featured-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(184, 115, 22, 0.85);
+      backdrop-filter: blur(8px);
+      border-radius: 40px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .gallery-cat-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 24px 24px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .gallery-cat-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 2.8vw, 34px);
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    /* Smaller name on smaller cards */
+    .gallery-cat:nth-child(2) .gallery-cat-name,
+    .gallery-cat:nth-child(3) .gallery-cat-name,
+    .gallery-cat:nth-child(4) .gallery-cat-name,
+    .gallery-cat:nth-child(5) .gallery-cat-name {
+      font-size: clamp(18px, 2vw, 26px);
+    }
+
+    .gallery-cat:nth-child(6) .gallery-cat-name {
+      font-size: clamp(20px, 2.2vw, 28px);
+    }
+
+    .gallery-cat-count {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      margin-top: 4px;
+    }
+
+    .gallery-cat-arrow {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: rgba(255, 255, 255, 0.7);
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
+    }
+
+    .gallery-cat:hover .gallery-cat-arrow {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translate(2px, -2px);
+      color: #fff;
+    }
+
+    .gallery-cat-arrow svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* View All button */
+    .gallery-view-all-wrap {
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .gallery-view-all-wrap::before,
+    .gallery-view-all-wrap::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-gallery-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 40px;
+      color: rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(8px);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-gallery-all:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.4);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .btn-gallery-all svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.25s;
+    }
+
+    .btn-gallery-all:hover svg {
+      transform: translateX(3px);
+    }
+
+    .gallery-ph {
+      display: none;
+    }
+
+    .gallery-grid {
+      display: none;
+    }
+
+    .gallery-video-wrap {
+      display: none;
+    }
+
+    .gallery-note {
+      display: none !important;
+    }
+
+    /* ─── VIDEO CARD IN GALLERY ─────────────────── */
+    .gallery-video-wrap {
+      margin: 22px auto 0;
+      max-width: 980px;
+      padding-top: 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 820px);
+      justify-content: center;
+      gap: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .video-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #1a1c14;
+      aspect-ratio: 16/9;
+      cursor: pointer;
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .video-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 12, 8, 0.82) 0%, rgba(10, 12, 8, 0.18) 48%, rgba(10, 12, 8, 0.28) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 28px;
+      transition: background 0.3s ease;
+    }
+
+    .video-card:hover .video-card-overlay {
+      background: linear-gradient(to top, rgba(10, 12, 8, 0.66) 0%, rgba(10, 12, 8, 0.1) 48%, rgba(10, 12, 8, 0.18) 100%);
+    }
+
+    .video-play-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      transition: all 0.3s;
+      margin-bottom: 18px;
+    }
+
+    .video-card:hover .video-play-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.7);
+      transform: scale(1.1);
+    }
+
+    .video-play-btn svg {
+      width: 20px;
+      height: 20px;
+      margin-left: 2px;
+    }
+
+    .video-card-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.88);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .video-card-sub {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.54);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .gallery-note {
+      display: none;
+      margin-top: 18px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.36);
+      font-style: italic;
+      text-align: center;
+    }
+
+    .gallery-note-refresh {
+      display: block;
+    }
+
+    /* ─── TIPS ───────────────────────────────────── */
+    #tips {}
+
+    .tips-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .tip-card {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--cream);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .tip-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(42, 38, 32, 0.08);
+    }
+
+    .tip-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--moss);
+      opacity: 0.5;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .tip-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--bark);
+      margin-bottom: 10px;
+    }
+
+    .tip-body {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--stone);
+      line-height: 1.7;
+    }
+
+    .tip-tag {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--moss);
+      background: var(--sage);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* ─── MISSION ────────────────────────────────── */
+    #mission {
+      background: var(--cream);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mission-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .mission-counter-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .mission-counter-main {
+      background: var(--bark);
+      border-radius: 20px;
+      padding: 48px;
+      text-align: center;
+      color: var(--cream);
+    }
+
+    .counter-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 16px;
+    }
+
+    .counter-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 64px;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--amber-light);
+      margin-bottom: 8px;
+    }
+
+    .counter-sub {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .counter-progress {
+      margin-top: 24px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .counter-bar {
+      height: 100%;
+      border-radius: 2px;
+      background: var(--amber-light);
+      transition: width 1.5s ease;
+    }
+
+    .mission-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .stat-card {
+      padding: 20px;
+      background: var(--parchment);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--moss);
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--stone-light);
+      letter-spacing: 0.06em;
+    }
+
+    .duc-logo-area {
+      margin-top: 20px;
+      padding: 20px;
+      background: var(--parchment);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .duc-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: #FEF3D8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--amber);
+      flex-shrink: 0;
+    }
+
+    .duc-info p:first-child {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--bark);
+    }
+
+    .duc-info p:last-child {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--stone);
+      line-height: 1.4;
+    }
+
+    .mission-text .section-body {
+      margin-bottom: 32px;
+    }
+
+    .mission-quote {
+      padding: 24px;
+      border-left: 3px solid var(--moss);
+      margin: 32px 0;
+      background: var(--parchment);
+      border-radius: 0 12px 12px 0;
+    }
+
+    .mission-quote blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--bark);
+      line-height: 1.6;
+    }
+
+    .mission-quote cite {
+      display: block;
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--stone-light);
+      font-style: normal;
+      letter-spacing: 0.06em;
+    }
+
+    /* ─── BOOKING ────────────────────────────────── */
+    #booking {}
+
+    .booking-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .booking-form-wrap {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+    }
+
+    .form-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--bark);
+      margin-bottom: 6px;
+    }
+
+    .form-sub {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--stone);
+      margin-bottom: 32px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--stone);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--parchment);
+      color: var(--bark);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--moss);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-email-note {
+      font-size: 12px;
+      color: var(--stone-light);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--moss);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 8px;
+    }
+
+    .form-submit:hover {
+      background: var(--moss-light);
+      transform: translateY(-1px);
+    }
+
+    .booking-info {
+      padding-top: 8px;
+    }
+
+    .booking-info .section-title {
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+
+    .info-list {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .info-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--moss);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    .info-text strong {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--bark);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .info-text span {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--stone);
+      line-height: 1.6;
+    }
+
+    .direct-email {
+      margin-top: 32px;
+      padding: 20px 24px;
+      background: var(--sage);
+      border-radius: 12px;
+      border: 1px solid rgba(58, 107, 16, 0.2);
+    }
+
+    .direct-email p:first-child {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--moss);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .direct-email a {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--bark);
+      text-decoration: none;
+      border-bottom: 1px solid var(--moss);
+    }
+
+    .direct-email a:hover {
+      color: var(--moss);
+    }
+
+    /* ─── FOOTER ─────────────────────────────────── */
+    footer {
+      background: #1A1710;
+      color: var(--cream);
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(184, 115, 22, 0.5), transparent);
+    }
+
+    .footer-mission-banner {
+      background: linear-gradient(135deg, #2A3A18 0%, #1e2b10 100%);
+      padding: 40px var(--page-gutter);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .footer-mission-banner-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-mission-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(240, 192, 96, 0.12);
+      border: 1px solid rgba(240, 192, 96, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .footer-mission-text p:first-child {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--amber-light);
+      margin-bottom: 4px;
+      letter-spacing: 0.01em;
+    }
+
+    .footer-mission-text p:last-child {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.45);
+      line-height: 1.5;
+    }
+
+    .footer-mission-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      background: rgba(240, 192, 96, 0.12);
+      border: 1px solid rgba(240, 192, 96, 0.3);
+      border-radius: 40px;
+      color: var(--amber-light);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .footer-mission-cta:hover {
+      background: rgba(240, 192, 96, 0.2);
+      border-color: rgba(240, 192, 96, 0.5);
+    }
+
+    .footer-main {
+      padding: 56px var(--page-gutter) 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .footer-brand-col {}
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 16px;
+      margin-bottom: 18px;
+      border-radius: 14px;
+      background: rgba(250, 248, 243, 0.95);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      text-decoration: none;
+      transition: box-shadow 0.2s;
+    }
+
+    .footer-brand:hover {
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    }
+
+    .footer-brand img {
+      display: block;
+      width: min(220px, 100%);
+      height: auto;
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.45);
+      line-height: 1.65;
+      max-width: 280px;
+      margin-bottom: 24px;
+    }
+
+    .footer-location {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.28);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer-location::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--moss-light);
+      flex-shrink: 0;
+    }
+
+    .footer-col h4 {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.3);
+      margin-bottom: 20px;
+    }
+
+    .footer-col a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.55);
+      text-decoration: none;
+      margin-bottom: 12px;
+      transition: color 0.2s, gap 0.2s;
+    }
+
+    .footer-col a::before {
+      content: '→';
+      font-size: 11px;
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: rgba(255, 255, 255, 0.9);
+      gap: 10px;
+    }
+
+    .footer-col a:hover::before {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .footer-links {
+      display: contents;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0 36px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.2);
+      font-weight: 300;
+      gap: 16px;
+    }
+
+    .footer-duc {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255, 255, 255, 0.28);
+    }
+
+    .footer-duc a {
+      color: rgba(240, 192, 96, 0.7);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-duc a:hover {
+      color: var(--amber-light);
+    }
+
+    .footer-duc span {
+      color: var(--amber-light);
+    }
+
+    @media (max-width: 900px) {
+      .footer-mission-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 32px var(--page-gutter);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+
+      .footer-brand-col {
+        grid-column: 1 / 3;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-brand-col {
+        grid-column: 1;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+    }
+
+    /* ─── AMENITIES ─────────────────────────────── */
+    #amenities {
+      background: var(--parchment);
+      border-top: 1px solid var(--border);
+    }
+
+    .amenities-header {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 56px;
+    }
+
+    .amenities-header .section-body {
+      margin: 0 auto;
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .amenity-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .amenity-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--moss), var(--moss-light));
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .amenity-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(42, 38, 32, 0.09);
+      border-color: rgba(58, 107, 16, 0.2);
+    }
+
+    .amenity-card:hover::before {
+      opacity: 1;
+    }
+
+    .amenity-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--sage);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .amenity-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--bark);
+      line-height: 1.3;
+    }
+
+    .amenity-desc {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--stone);
+      line-height: 1.55;
+    }
+
+    .amenity-badge {
+      display: inline-block;
+      margin-top: auto;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--moss);
+      background: var(--sage);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .amenities-note {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--stone-light);
+      font-style: italic;
+    }
+
+    @media (max-width: 1100px) {
+      .amenities-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      #amenities {
+        padding: 64px 24px;
+      }
+
+      .amenities-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .amenities-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ─── ANIMATIONS ────────────────────────────── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-left>* {
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    .hero-left>*:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .hero-left>*:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .hero-left>*:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .hero-left>*:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    .hero-left>*:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+
+    /* ─── RESPONSIVE ────────────────────────────── */
+    @media (max-width: 900px) {
+      :root {
+        --nav-height: 73px;
+        --page-gutter: 24px;
+        --section-space: 64px;
+      }
+
+      nav {
+        padding: 16px var(--page-gutter);
+      }
+
+      .nav-logo img {
+        height: 38px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-hamburger {
+        display: flex !important;
+      }
+
+      #hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        height: auto;
+      }
+
+      .hero-left {
+        padding: 60px var(--page-gutter) 40px;
+      }
+
+      .hero-right {
+        display: none;
+      }
+
+      .spot-shell,
+      .mission-inner,
+      .booking-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      #spot {
+        min-height: auto;
+        padding: var(--section-space) var(--page-gutter);
+      }
+
+      .spot-shell {
+        min-height: auto;
+      }
+
+      #cinematic {
+        height: 60vh;
+        min-height: 360px;
+      }
+
+      .cinematic-title {
+        font-size: clamp(28px, 7vw, 44px);
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(6, 180px);
+      }
+
+      .gallery-cats {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 260px 220px 180px;
+      }
+
+      .gallery-cat:nth-child(1) {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+      }
+
+      .gallery-cat:nth-child(2) {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+      }
+
+      .gallery-cat:nth-child(3) {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+      }
+
+      .gallery-cat:nth-child(4) {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+      }
+
+      .gallery-cat:nth-child(5) {
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
+      }
+
+      .gallery-cat:nth-child(6) {
+        grid-column: 1 / 3;
+        grid-row: 4 / 5;
+        height: 180px;
+      }
+
+      .gallery-item:nth-child(1) {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+      }
+
+      .gallery-item:nth-child(2) {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+      }
+
+      .gallery-item:nth-child(3) {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+      }
+
+      .gallery-item:nth-child(4) {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+      }
+
+      .gallery-item:nth-child(5) {
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
+      }
+
+      .gallery-item:nth-child(6) {
+        grid-column: 1 / 3;
+        grid-row: 4 / 5;
+      }
+
+      .gallery-item:nth-child(7) {
+        grid-column: 1 / 2;
+        grid-row: 5 / 6;
+      }
+
+      .gallery-item:nth-child(8) {
+        grid-column: 2 / 3;
+        grid-row: 5 / 6;
+      }
+
+      .gallery-item:nth-child(9) {
+        grid-column: 1 / 3;
+        grid-row: 6 / 7;
+      }
+
+      .gallery-video-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .tips-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mission-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .tips-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+    /* ─── HAMBURGER (base = hidden; shown inside media query below) ─── */
+    .nav-hamburger {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: var(--parchment);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      padding: 0;
+      flex-shrink: 0;
+      display: none;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--bark);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .mobile-nav {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-12px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .mobile-nav.open {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+
+    .mobile-nav-logo {
+      position: absolute;
+      top: 20px;
+      left: var(--page-gutter);
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: var(--parchment);
+      text-decoration: none;
+    }
+
+    .mobile-nav-logo img {
+      height: 30px;
+      width: auto;
+      display: block;
+    }
+
+    .mobile-nav-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: var(--parchment);
+      border: none;
+      border-radius: 50%;
+      font-size: 18px;
+      color: var(--stone);
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .mobile-nav-close:hover {
+      background: var(--border);
+      color: var(--bark);
+    }
+
+    .mobile-nav-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--border);
+      margin: 8px 0 16px;
+    }
+
+    .mobile-nav-link {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px;
+      font-weight: 300;
+      color: var(--bark);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      padding: 6px 0;
+      transition: color 0.2s, transform 0.2s;
+      display: block;
+      text-align: center;
+    }
+
+    .mobile-nav-link:hover {
+      color: var(--moss);
+      transform: translateX(4px);
+    }
+
+    .mobile-nav-cta {
+      margin-top: 20px;
+      padding: 14px 40px;
+      background: var(--moss);
+      color: var(--cream) !important;
+      border-radius: 40px;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .mobile-nav-cta:hover {
+      background: var(--moss-light);
+    }
+
+    .mobile-nav-footer {
+      position: absolute;
+      bottom: 28px;
+      font-size: 11px;
+      color: var(--stone-light);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ─── WHATSAPP FAB ──────────────────────────── */
+    /* ─── LIGHTBOX ──────────────────────────────── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(10, 10, 10, 0.94);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .lightbox-img {
+      max-width: 90vw;
+      max-height: 88vh;
+      border-radius: 8px;
+      object-fit: contain;
+      transform: scale(0.94);
+      transition: transform 0.3s ease;
+    }
+
+    .lightbox.open .lightbox-img {
+      transform: scale(1);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 32px;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .lightbox-close:hover {
+      color: #fff;
+    }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .lightbox-nav:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+
+    .lightbox-prev {
+      left: 20px;
+    }
+
+    .lightbox-next {
+      right: 20px;
+    }
+
+    /* gallery-item cursor already set above */
+
+    /* ─── ESTABLISHED BADGE ─────────────────────── */
+    .est-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: var(--sage);
+      border: 1px solid rgba(58, 107, 16, 0.2);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--moss);
+      margin-bottom: 20px;
+    }
+
+    .est-badge::before {
+      content: '✦';
+      font-size: 9px;
+    }
+
+    /* ─── Q&A ───────────────────────────────────── */
+    #faq {
+      background: var(--cream);
+    }
+
+    .faq-inner {}
+
+    .faq-list {
+      width: min(100%, var(--content-narrow));
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-item {
+      border-top: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .faq-item:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      text-align: left;
+      gap: 16px;
+    }
+
+    .faq-q-text {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--bark);
+      line-height: 1.4;
+    }
+
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--stone);
+      font-size: 18px;
+      font-weight: 300;
+      transition: transform 0.3s, background 0.2s, color 0.2s;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--moss);
+      color: var(--cream);
+      border-color: var(--moss);
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 300px;
+      padding-bottom: 24px;
+    }
+
+    .faq-a p {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--stone);
+    }
+
+    @media (max-width: 900px) {}
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══ NAV ═══════════════════════════════════════ -->
+  <nav>
+    <a href="#" class="nav-logo" aria-label="YuRu home">
+      <img src="imgs/Yuru Logo Characters Only.png" alt="YuRu" width="1200" height="432">
+    </a>
+    <div class="nav-links">
+      <a href="#spot">The Spot</a>
+      <a href="#amenities">Amenities</a>
+      <a href="#cinematic">Experience</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#tips">Tips</a>
+      <a href="#mission">Our Mission</a>
+      <a href="#booking" class="nav-cta">Book a Stay</a>
+    </div>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <!-- Mobile nav overlay -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#" class="mobile-nav-logo" aria-label="YuRu home">
+      <img src="imgs/Yuru Logo Characters Only.png" alt="YuRu" height="30">
+    </a>
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">✕</button>
+    <a href="#spot" class="mobile-nav-link" id="mnSpot">The Spot</a>
+    <a href="#amenities" class="mobile-nav-link" id="mnAmenities">Amenities</a>
+    <a href="#cinematic" class="mobile-nav-link" id="mnExperience">Experience</a>
+    <a href="#gallery" class="mobile-nav-link" id="mnGallery">Gallery</a>
+    <div class="mobile-nav-divider"></div>
+    <a href="#tips" class="mobile-nav-link" id="mnTips">Tips</a>
+    <a href="#mission" class="mobile-nav-link" id="mnMission">Our Mission</a>
+    <a href="#booking" class="mobile-nav-cta" id="mnBooking">Book a Stay</a>
+    <p class="mobile-nav-footer">Hood Canal, Washington</p>
+  </div>
+
+  <!-- ═══ HERO ═══════════════════════════════════════ -->
+  <section id="hero">
+    <p class="hero-kicker">115 Pleasant Harbor Rd · Brinnon, WA · Hood Canal</p>
+    <h1>Unplug.<br>Slow down.<br><em>Simply relax.</em></h1>
+    <p class="hero-tagline">A private beach on Washington's only saltwater fjord. A glamping retreat kept for family and
+      close friends — by invitation only. Nothing rushed. Nothing wasted. Just the water and the people you love. Every
+      booking benefits the <strong>Đức Foundation.</strong></p>
+    <div class="hero-btns">
+      <a href="#spot" class="btn-primary">Explore the Property</a>
+      <a href="#booking" class="btn-ghost">Reserve Your Stay</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ═══ THE SPOT ════════════════════════════════════ -->
+  <section id="spot">
+    <div class="section-shell spot-shell">
+      <div>
+        <span class="section-tag">The space</span>
+        <h2 class="section-title">One spot.<br><em>Entirely yours.</em></h2>
+        <p class="section-body">
+          A single private site nestled in the trees outside Hood Canal — no neighbors, no crowds, no strangers. When
+          you're
+          here, the whole place is yours.
+        </p>
+        <div class="spot-features">
+          <div class="feature-card">
+            <div class="feature-icon">🌲</div>
+            <p class="feature-name">Forest setting</p>
+            <p class="feature-desc">Surrounded by Pacific Northwest old-growth trees</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔥</div>
+            <p class="feature-name">Fire pit</p>
+            <p class="feature-desc">Stone fire ring, firewood available on-site</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🏕️</div>
+            <p class="feature-name">Tent-ready ground</p>
+            <p class="feature-desc">Flat, cleared site for up to 3 tents comfortably</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⭐</div>
+            <p class="feature-name">Private access</p>
+            <p class="feature-desc">By invitation only — for families and friends</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="spot-visual">
+          <img src="imgs/The view (2).JPG" alt="The camping spot"
+            style="width:100%;height:100%;object-fit:cover;display:block">
+          <div class="spot-tag-overlay">
+            <p>Location</p>
+            <p>Hood Canal, Washington</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ AMENITIES ══════════════════════════════════ -->
+  <section id="amenities">
+    <div class="section-shell">
+      <div class="amenities-header">
+        <span class="section-tag">What's included</span>
+        <h2 class="section-title">Everything you<br>need to <em>unwind.</em></h2>
+        <p class="section-body">The site comes ready — just show up, breathe in, and let the forest do the rest.</p>
+      </div>
+      <div class="amenities-grid">
+
+        <div class="amenity-card">
+          <div class="amenity-icon">🔥</div>
+          <p class="amenity-name">Fire pit</p>
+          <p class="amenity-desc">Stone fire ring with firewood available on-site. Perfect for evenings under the stars.
+          </p>
+          <span class="amenity-badge">Outdoor</span>
+        </div>
+
+        <div class="amenity-card">
+          <div class="amenity-icon">🪑</div>
+          <p class="amenity-name">Outdoor seating</p>
+          <p class="amenity-desc">Chairs and tables set up around the fire and dining area — no need to bring your own.
+          </p>
+          <span class="amenity-badge">Outdoor</span>
+        </div>
+
+        <div class="amenity-card">
+          <div class="amenity-icon">🍖</div>
+          <p class="amenity-name">BBQ grill</p>
+          <p class="amenity-desc">Full BBQ setup ready to use. Bring your ingredients and cook outdoors the right way.
+          </p>
+          <span class="amenity-badge">Cooking</span>
+        </div>
+
+        <div class="amenity-card">
+          <div class="amenity-icon">🍳</div>
+          <p class="amenity-name">Camp kitchen</p>
+          <p class="amenity-desc">Basic cooking setup for meals — burner, prep area, and utensils available on request.
+          </p>
+          <span class="amenity-badge">Cooking</span>
+        </div>
+
+        <div class="amenity-card">
+          <div class="amenity-icon">🚿</div>
+          <p class="amenity-name">Bathroom & shower</p>
+          <p class="amenity-desc">Clean private bathroom and shower on-site. A real luxury for a forest retreat.</p>
+          <span class="amenity-badge">Comfort</span>
+        </div>
+
+        <div class="amenity-card">
+          <div class="amenity-icon">📶</div>
+          <p class="amenity-name">WiFi</p>
+          <p class="amenity-desc">Reliable WiFi available on-site. For emergencies and memories — not for
+            doom-scrolling.
+          </p>
+          <span class="amenity-badge">Connectivity</span>
+        </div>
+
+        <div class="amenity-card">
+          <div class="amenity-icon">💡</div>
+          <p class="amenity-name">Lighting & power</p>
+          <p class="amenity-desc">Ambient outdoor lighting throughout the site. Power outlets available for charging.
+          </p>
+          <span class="amenity-badge">Comfort</span>
+        </div>
+
+        <div class="amenity-card">
+          <div class="amenity-icon">🚗</div>
+          <p class="amenity-name">Parking</p>
+          <p class="amenity-desc">Free on-site parking for your group. Directions and parking instructions shared after
+            booking.</p>
+          <span class="amenity-badge">Access</span>
+        </div>
+
+      </div>
+      <!-- ✏️ Add or remove cards above to match exactly what you have on-site -->
+      <p class="amenities-note">Amenities may vary by season · Details confirmed upon booking</p>
+    </div>
+  </section>
+
+  <!-- ═══ CINEMATIC VIDEO ══════════════════════════════ -->
+  <section id="cinematic" style="padding:0">
+    <video class="cinematic-video lazy-video" muted loop playsinline preload="none" poster="imgs/poster_drone.webp"
+      data-src="imgs/DJI_drone_compressed.mp4" aria-label="Aerial cinematic view of Yuru">
+    </video>
+    <div class="cinematic-overlay">
+      <p class="cinematic-tag">Aerial View</p>
+      <h2 class="cinematic-title">See YuRu<br>from <em>above.</em></h2>
+      <p class="cinematic-sub">A private retreat surrounded by towering Pacific Northwest pines — captured from a
+        bird's-eye perspective.</p>
+      <button class="cinematic-play" id="cinematicPlayBtn" aria-label="Play/Pause video">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none" />
+        </svg>
+      </button>
+    </div>
+    <div class="cinematic-scroll-hint">
+      <span>Scroll</span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M7 2v10M3 8l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- ═══ GALLERY ════════════════════════════════════ -->
+  <section id="gallery">
+    <div class="section-shell">
+      <span class="section-tag">Moments</span>
+      <h2 class="section-title">What it feels<br>like to be <em>here.</em></h2>
+
+      <!-- Category Grid -->
+      <div class="gallery-cats">
+
+        <!-- 1. FEATURED — no category label -->
+        <a href="gallery.html?cat=the-view" class="gallery-cat">
+          <img src="imgs/main.jpg" alt="The View at YuRu" class="gallery-cat-img">
+          <div class="gallery-cat-overlay"></div>
+          <div class="gallery-cat-featured-badge">
+            <svg width="9" height="9" viewBox="0 0 9 9" fill="currentColor">
+              <circle cx="4.5" cy="4.5" r="4.5" />
+            </svg>
+            Featured
+          </div>
+          <div class="gallery-cat-info">
+            <div>
+              <p class="gallery-cat-name">Memories</p>
+              <p class="gallery-cat-count">Fun - Relaxing - Scenic</p>
+            </div>
+            <div class="gallery-cat-arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- 2. Waterfront (main: Waterfront-main.jpg) -->
+        <a href="gallery.html?cat=waterfront" class="gallery-cat">
+          <img src="imgs/Waterfront-main.jpg" alt="Waterfront at YuRu" class="gallery-cat-img">
+          <div class="gallery-cat-overlay"></div>
+          <div class="gallery-cat-info">
+            <div>
+              <p class="gallery-cat-name">Waterfront</p>
+              <p class="gallery-cat-count">Dock · Crabbing · Kayaking</p>
+            </div>
+            <div class="gallery-cat-arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- 3. Kitchen (main: Kitchen-main.jpg) -->
+        <a href="gallery.html?cat=kitchen" class="gallery-cat">
+          <img src="imgs/Kitchen-main.jpg" alt="Kitchen at YuRu" class="gallery-cat-img">
+          <div class="gallery-cat-overlay"></div>
+          <div class="gallery-cat-info">
+            <div>
+              <p class="gallery-cat-name">Kitchen</p>
+              <p class="gallery-cat-count">BBQ · Camp cooking · Fire pit</p>
+            </div>
+            <div class="gallery-cat-arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- 4. Activities (main: activities-main.jpg) -->
+        <a href="gallery.html?cat=activities" class="gallery-cat">
+          <img src="imgs/activities-main.jpg" alt="Activities at YuRu" class="gallery-cat-img">
+          <div class="gallery-cat-overlay"></div>
+          <div class="gallery-cat-info">
+            <div>
+              <p class="gallery-cat-name">Activities</p>
+              <p class="gallery-cat-count">Crabbing · Fishing · Kayaking</p>
+            </div>
+            <div class="gallery-cat-arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- 5. Amenities (main: Fire pit.jpg) -->
+        <a href="gallery.html?cat=amenities" class="gallery-cat">
+          <img src="imgs/Fire pit.jpg" alt="Amenities at YuRu" class="gallery-cat-img">
+          <div class="gallery-cat-overlay"></div>
+          <div class="gallery-cat-info">
+            <div>
+              <p class="gallery-cat-name">Amenities</p>
+              <p class="gallery-cat-count">Fire pit · Shower · WiFi</p>
+            </div>
+            <div class="gallery-cat-arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- 6. The View — wide banner (main: The view-main.jpg) -->
+        <a href="gallery.html?cat=activities" class="gallery-cat">
+          <img src="imgs/Activities.jpg" alt="Activities at YuRu" class="gallery-cat-img"
+            style="object-position: center 60%;">
+          <div class="gallery-cat-overlay"></div>
+          <div class="gallery-cat-info">
+            <div>
+              <p class="gallery-cat-name">The View</p>
+              <p class="gallery-cat-count">Sunrise · Lake · Forest panorama</p>
+            </div>
+            <div class="gallery-cat-arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </div>
+          </div>
+        </a>
+
+      </div><!-- /gallery-cats -->
+
+      <!-- View all CTA -->
+      <div class="gallery-view-all-wrap">
+        <a href="gallery.html" class="btn-gallery-all">
+          Browse all photos
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M3 8h10M9 4l4 4-4 4" />
+          </svg>
+        </a>
+      </div>
+
+    </div><!-- /section-shell -->
+  </section>
+
+
+  <!-- ═══ TIPS ════════════════════════════════════════ -->
+  <section id="tips">
+    <div class="section-shell">
+      <div class="tips-header">
+        <div>
+          <span class="section-tag">Before you come</span>
+          <h2 class="section-title" style="margin-bottom:0">A few things<br>worth <em>knowing.</em></h2>
+        </div>
+      </div>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <span class="tip-num">01</span>
+          <p class="tip-title">Layers are essential</p>
+          <p class="tip-body">Hood Canal nights get cold even in summer. Bring a warm sleeping bag rated to 40°F or
+            lower,
+            and a waterproof outer layer just in case.</p>
+          <span class="tip-tag">Gear</span>
+        </div>
+        <div class="tip-card">
+          <span class="tip-num">02</span>
+          <p class="tip-title">Leave no trace</p>
+          <p class="tip-body">Pack out everything you bring. The site stays pristine because every guest treats it like
+            their own backyard — please keep that tradition.</p>
+          <span class="tip-tag">Etiquette</span>
+        </div>
+        <div class="tip-card">
+          <span class="tip-num">03</span>
+          <p class="tip-title">Best time to visit</p>
+          <p class="tip-body">Late June through September offers the driest weather. Spring camping is beautiful but
+            come
+            prepared for morning rain and mud.</p>
+          <span class="tip-tag">Timing</span>
+        </div>
+        <div class="tip-card">
+          <span class="tip-num">04</span>
+          <p class="tip-title">Wildlife awareness</p>
+          <p class="tip-body">Store food in your car or a hard-sided container. This is the Pacific Northwest — bears
+            and
+            raccoons are curious neighbors.</p>
+          <span class="tip-tag">Safety</span>
+        </div>
+        <div class="tip-card">
+          <span class="tip-num">05</span>
+          <p class="tip-title">Water & power</p>
+          <p class="tip-body">The site has no hookups. Bring at least 2 liters of water per person per day. A solar
+            charger handles phone batteries well.</p>
+          <span class="tip-tag">Essentials</span>
+        </div>
+        <div class="tip-card">
+          <span class="tip-num">06</span>
+          <p class="tip-title">Getting there</p>
+          <p class="tip-body">GPS works well to the site. Exact directions and any gate codes will be shared after your
+            booking is confirmed via email.</p>
+          <span class="tip-tag">Directions</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MISSION ════════════════════════════════════ -->
+  <section id="mission">
+    <div class="section-shell">
+      <div class="mission-inner">
+        <div class="mission-text">
+          <span class="section-tag">Why we exist</span>
+          <h2 class="section-title">Every night out<br>funds a <em>future.</em></h2>
+          <p class="section-body">
+            YuRu was built with a single purpose: every dollar you pay for a stay goes directly to the Duc Foundation —
+            a
+            scholarship fund supporting Vietnamese students in their pursuit of education.
+          </p>
+          <div class="mission-quote">
+            <blockquote>
+              "We believe a night under the stars should mean something beyond the stay itself."
+            </blockquote>
+            <cite>— YuRu, Hood Canal</cite>
+          </div>
+          <p class="section-body">
+            We keep the operation simple and personal so that nothing gets lost between your booking and a student's
+            opportunity. No overhead. No middleman. Just camping and scholarships.
+          </p>
+          <div class="duc-logo-area" style="margin-top:28px">
+            <div class="duc-badge">D</div>
+            <div class="duc-info">
+              <p><a href="https://ducfoundation.org/" target="_blank" style="color: inherit; text-decoration: none;">Duc
+                  Foundation</a></p>
+              <p>Scholarships for Vietnamese students · 100% of YuRu proceeds donated</p>
+            </div>
+          </div>
+        </div>
+        <div class="mission-counter-wrap">
+          <div class="mission-counter-main">
+            <p class="counter-label">Total donated to Duc Foundation</p>
+            <p class="counter-amount" id="counter">$0</p>
+            <p class="counter-sub">and counting</p>
+            <div class="counter-progress">
+              <div class="counter-bar" id="counter-bar" style="width:0%"></div>
+            </div>
+          </div>
+          <div class="mission-stats">
+            <div class="stat-card">
+              <p class="stat-num" id="stays-count">0</p>
+              <p class="stat-label">Stays completed</p>
+            </div>
+            <div class="stat-card">
+              <p class="stat-num" id="students-count">0</p>
+              <p class="stat-label">Students supported</p>
+            </div>
+            <div class="stat-card">
+              <p class="stat-num">2024</p>
+              <p class="stat-label">Founded</p>
+            </div>
+            <div class="stat-card">
+              <p class="stat-num">100%</p>
+              <p class="stat-label">Donated</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BOOKING ════════════════════════════════════ -->
+  <section id="booking">
+    <div class="section-shell">
+      <div class="booking-inner">
+        <div class="booking-info">
+          <span class="section-tag">Reserve your stay</span>
+          <h2 class="section-title">Ready to<br><em>escape?</em></h2>
+          <p class="section-body">
+            YuRu is a private site — we keep it small and personal. Send us a message and we'll get back to you within
+            24
+            hours to confirm availability and share details.
+          </p>
+          <div class="info-list">
+            <div class="info-item">
+              <div class="info-dot"></div>
+              <div class="info-text">
+                <strong>Private guests only</strong>
+                <span>Open to families, couples, and small groups of friends — not open to the general public.</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-dot"></div>
+              <div class="info-text">
+                <strong>Minimum stay</strong>
+                <span>1 night. Weekend and multi-night stays are welcome and encouraged.</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-dot"></div>
+              <div class="info-text">
+                <strong>Booking process</strong>
+                <span>Fill out the form or email us directly. We'll confirm within 24 hours with pricing and
+                  instructions.</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-dot"></div>
+              <div class="info-text">
+                <strong>Your stay funds a scholarship</strong>
+                <span>100% of what you pay goes to the <a href="https://ducfoundation.org/" target="_blank"
+                    style="color: inherit; text-decoration: underline;">Duc Foundation</a>. You'll receive a donation
+                  receipt.</span>
+              </div>
+            </div>
+          </div>
+          <div class="direct-email">
+            <p>Prefer to email directly?</p>
+            <!-- Replace with your actual Gmail address -->
+            <a href="/cdn-cgi/l/email-protection#f4809c959a9c809d9a8797c5b49399959d98da979b99"><span
+                class="__cf_email__"
+                data-cfemail="285c404946405c41465b4b19684f45494144064b4745">[email&#160;protected]</span></a>
+          </div>
+        </div>
+        <div class="booking-form-wrap">
+          <p class="form-title">Send a request</p>
+          <p class="form-sub">We'll reply within 24 hours.</p>
+          <form id="booking-form" onsubmit="handleSubmit(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Your name</label>
+                <input type="text" name="name" placeholder="Jane Smith" required>
+              </div>
+              <div class="form-group">
+                <label>Email address</label>
+                <input type="email" name="email" placeholder="jane@email.com" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Arrival date</label>
+                <input type="date" name="checkin" required>
+              </div>
+              <div class="form-group">
+                <label>Departure date</label>
+                <input type="date" name="checkout" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Group size</label>
+              <select name="guests">
+                <option value="">Select...</option>
+                <option>1–2 people</option>
+                <option>3–4 people</option>
+                <option>5–6 people</option>
+                <option>7+ people</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message (optional)</label>
+              <textarea name="message"
+                placeholder="Tell us a bit about your group and what you're looking forward to..."></textarea>
+            </div>
+            <p class="form-email-note">
+              Submitting this form will open your email client with a pre-filled message to us. Alternatively, email us
+              directly at <strong><a
+                  href="/cdn-cgi/l/email-protection#592d313837312d30372a3a68193e34383035773a3634"><span
+                    class="__cf_email__"
+                    data-cfemail="b1c5d9d0dfd9c5d8dfc2d280f1d6dcd0d8dd9fd2dedc">[email&#160;protected]</span></a></strong>.
+            </p>
+            <button type="submit" class="form-submit">Send booking request →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ════════════════════════════════════════ -->
+  <section id="faq">
+    <div class="section-shell faq-inner">
+      <span class="section-tag">Questions & Answers</span>
+      <h2 class="section-title">Everything you<br>want to <em>know.</em></h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="faq-q-text">How do I book a stay at YuRu?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Fill out the booking form above or email us directly. We'll get back to you within 24 hours to confirm
+              availability and share pricing details. YuRu is a private site, so all stays are arranged personally — no
+              online calendars or instant booking.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="faq-q-text">How much does it cost to stay?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Pricing is shared after we confirm availability with you. Every dollar you pay goes directly to the Duc
+              Foundation as a scholarship donation — you'll receive a donation receipt. We keep it simple and
+              transparent.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="faq-q-text">Who is YuRu open to?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>YuRu is open to families, couples, and small groups of close friends. It's not open to the general public
+              — we keep it personal and private. If you know us or were referred by someone who does, you're very
+              welcome here.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="faq-q-text">What's included at the site?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>The site includes a stone fire ring with firewood, flat cleared ground for up to 3 tents, and full forest
+              privacy. There are no electrical hookups or running water — bring at least 2 liters per person per day.
+              Exact details are shared after booking.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="faq-q-text">Where exactly is the site located?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>YuRu is in the Hood Canal of Washington State. For privacy reasons we don't share the exact address
+              publicly — full directions and any gate information are sent to you after your booking is confirmed.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="faq-q-text">Does my payment really go to scholarships?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Yes — 100% of what you pay goes directly to the <a href="https://ducfoundation.org/" target="_blank"
+                style="color:var(--moss)">Duc Foundation</a>, which provides scholarships for Vietnamese students. We
+              run YuRu with no operational overhead taken from guest payments. You'll receive a donation receipt for
+              your records.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="faq-q-text">What's the best time of year to visit?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Late June through September offers the driest and warmest conditions — ideal for camping. Spring is
+              beautiful but expect morning rain. Winter camping is possible for experienced campers who don't mind cold,
+              wet Pacific Northwest weather. Whatever the season, always bring layers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)">&#8249;</button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)">&#8250;</button>
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+
+  <!-- ═══ FOOTER ════════════════════════════════════ -->
+  <footer>
+    <!-- Mission Banner -->
+    <div class="footer-mission-banner">
+      <div class="footer-mission-banner-left">
+        <div class="footer-mission-icon">🌱</div>
+        <div class="footer-mission-text">
+          <p>100% of proceeds support Vietnamese students</p>
+          <p>Every stay you make is a scholarship in the making — via the Duc Foundation.</p>
+        </div>
+      </div>
+      <a href="https://ducfoundation.org/" target="_blank" class="footer-mission-cta">
+        Learn about Duc Foundation
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </a>
+    </div>
+
+    <!-- Main footer grid -->
+    <div class="footer-main">
+      <div class="footer-grid">
+
+        <!-- Brand col -->
+        <div class="footer-brand-col">
+          <a href="#" class="footer-brand" aria-label="YuRu home">
+            <img src="imgs/yuru-logo-removebg-preview.png" alt="YuRu logo" width="1200" height="432">
+          </a>
+          <p class="footer-tagline">A private camping retreat tucked in Hood Canal, Washington — available by invitation
+            for families and close friends.</p>
+          <p class="footer-location">Hood Canal, Washington · Est. 2024</p>
+        </div>
+
+        <!-- Explore col -->
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="#spot">The Spot</a>
+          <a href="#amenities">Amenities</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#tips">Tips &amp; Guides</a>
+          <a href="#faq">FAQ</a>
+        </div>
+
+        <!-- Visit col -->
+        <div class="footer-col">
+          <h4>Visit</h4>
+          <a href="#booking">Book a Stay</a>
+          <a href="#mission">Our Mission</a>
+          <a href="/cdn-cgi/l/email-protection#c4b0aca5aaacb0adaab7a7f584a3a9a5ada8eaa7aba9">Contact Us</a>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 YuRu. Hood Canal, Washington.</p>
+        <div class="footer-duc">
+          All proceeds benefit&nbsp;<a href="https://ducfoundation.org/" target="_blank">Duc Foundation</a>&nbsp;—
+          scholarships for Vietnamese students
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script>
+    /* ── COUNTER CONFIG ─────────────────────────
+       Change these three values whenever you want
+       to update the displayed donation numbers.   */
+    const TOTAL_DONATED = 100000;      // e.g. 1250 → displays "$1,250"
+    const STAYS_COUNT = 0;      // number of completed stays
+    const STUDENTS_COUNT = 11;      // number of students supported
+    const GOAL_AMOUNT = 5000;   // used for the progress bar (your fundraising goal)
+    /* ────────────────────────────────────────── */
+
+    function animateCount(el, target, prefix, suffix, duration) {
+      const start = 0, step = 16;
+      let current = start;
+      const increment = target / (duration / step);
+      const timer = setInterval(() => {
+        current = Math.min(current + increment, target);
+        el.textContent = prefix + Math.round(current).toLocaleString() + suffix;
+        if (current >= target) clearInterval(timer);
+      }, step);
+    }
+
+    function initCounters() {
+      const counterEl = document.getElementById('counter');
+      const barEl = document.getElementById('counter-bar');
+      const staysEl = document.getElementById('stays-count');
+      const studEl = document.getElementById('students-count');
+
+      animateCount(counterEl, TOTAL_DONATED, '$', '', 1800);
+      animateCount(staysEl, STAYS_COUNT, '', '', 1200);
+      animateCount(studEl, STUDENTS_COUNT, '', '', 1200);
+
+      const pct = GOAL_AMOUNT > 0 ? Math.min((TOTAL_DONATED / GOAL_AMOUNT) * 100, 100) : 0;
+      setTimeout(() => { barEl.style.width = pct + '%'; }, 300);
+    }
+
+    /* Trigger counters when mission section is visible */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { initCounters(); observer.disconnect(); } });
+    }, { threshold: 0.3 });
+    const missionEl = document.getElementById('mission');
+    if (missionEl) observer.observe(missionEl);
+
+    /* ── BOOKING FORM → EMAIL ─────────────────── */
+    function handleSubmit(e) {
+      e.preventDefault();
+      const f = e.target;
+      const to = 'thanhtinsc1@gmail.com'; /* ← change to your actual email */
+      const subject = encodeURIComponent('YuRu Camping — Booking Request');
+      const body = encodeURIComponent(
+        `Name: ${f.name.value}\n` +
+        `Email: ${f.email.value}\n` +
+        `Arrival: ${f.checkin.value}\n` +
+        `Departure: ${f.checkout.value}\n` +
+        `Group size: ${f.guests.value}\n\n` +
+        `Message:\n${f.message.value}`
+      );
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    }
+
+    /* ── SMOOTH REVEAL ON SCROLL ──────────────── */
+    const revealEls = document.querySelectorAll('section:not(#cinematic), .tip-card, .feature-card, .stat-card, .gallery-item, .video-card');
+    revealEls.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; el.style.transition = 'opacity 0.6s ease, transform 0.6s ease'; });
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    /* ── HAMBURGER MENU ───────────────────────── */
+    const hamburger = document.getElementById('navHamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileNavClose = document.getElementById('mobileNavClose');
+
+    function openMobileNav() {
+      mobileNav.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileNav() {
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    if (hamburger) hamburger.addEventListener('click', openMobileNav);
+    if (mobileNavClose) mobileNavClose.addEventListener('click', closeMobileNav);
+
+    /* Close mobile nav when any link inside is clicked */
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMobileNav);
+    });
+
+    /* ── LIGHTBOX ────────────────────────────── */
+    const lightboxImages = [
+      { src: 'imgs/DSCF7490.webp', caption: 'The campsite' },
+      { src: 'imgs/DHN_0615.webp', caption: 'The fire ring' },
+      { src: 'imgs/DHN_0442.webp', caption: 'Details' },
+      { src: 'imgs/DSCF7500.webp', caption: 'Morning light' },
+      { src: 'imgs/DHN_0716.webp', caption: 'Camp life' },
+      { src: 'imgs/DSCF7506.webp', caption: 'Forest canopy' },
+      { src: 'imgs/DHN_0862.webp', caption: 'Evening' },
+      { src: 'imgs/DSCF7533.webp', caption: 'Peaceful retreat' },
+      { src: 'imgs/Brinnon Lost Ship Under The Stars.webp', caption: 'Under the stars' },
+    ];
+    let currentLightboxIdx = 0;
+
+    function openLightbox(idx) {
+      currentLightboxIdx = idx;
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      const cap = document.getElementById('lightbox-caption');
+      img.src = lightboxImages[idx].src;
+      cap.textContent = lightboxImages[idx].caption;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function closeLightboxOutside(e) {
+      if (e.target === document.getElementById('lightbox')) closeLightbox();
+    }
+    function lightboxNav(dir) {
+      currentLightboxIdx = (currentLightboxIdx + dir + lightboxImages.length) % lightboxImages.length;
+      openLightbox(currentLightboxIdx);
+    }
+    document.addEventListener('keydown', (e) => {
+      const lb = document.getElementById('lightbox');
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') lightboxNav(1);
+      if (e.key === 'ArrowLeft') lightboxNav(-1);
+    });
+
+    /* ── FAQ ACCORDION ───────────────────────── */
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    /* ── CINEMATIC VIDEO PLAY/PAUSE ───────────── */
+    (function () {
+      const btn = document.getElementById('cinematicPlayBtn');
+      const video = document.querySelector('#cinematic .cinematic-video');
+      if (!btn || !video) return;
+      const playSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg>';
+      const pauseSVG = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>';
+      const syncCinematicButton = () => {
+        const isPlaying = !video.paused && !video.ended;
+        btn.innerHTML = isPlaying ? pauseSVG : playSVG;
+        btn.setAttribute('aria-pressed', String(isPlaying));
+      };
+      syncCinematicButton();
+      btn.addEventListener('click', () => {
+        if (video.paused) {
+          video.play().catch(() => { });
+        } else {
+          video.pause();
+        }
+      });
+      video.addEventListener('play', syncCinematicButton);
+      video.addEventListener('pause', syncCinematicButton);
+      video.addEventListener('loadeddata', syncCinematicButton);
+    })();
+
+    /* ── LAZY LOAD VIDEOS (IntersectionObserver) ── */
+    const lazyVideoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const video = entry.target;
+          const src = video.dataset.src;
+          if (src && !video.querySelector('source')) {
+            const source = document.createElement('source');
+            source.src = src;
+            source.type = 'video/mp4';
+            video.appendChild(source);
+            video.load();
+            // Auto-play cinematic video once loaded
+            if (video.classList.contains('cinematic-video')) {
+              video.play().catch(() => { });
+            }
+          }
+          lazyVideoObserver.unobserve(video);
+        }
+      });
+    }, { rootMargin: '200px' });
+    document.querySelectorAll('.lazy-video').forEach(v => lazyVideoObserver.observe(v));
+
+    /* ── VIDEO CARDS HOVER-TO-PLAY ────────────── */
+    document.querySelectorAll('.video-card').forEach(card => {
+      const vid = card.querySelector('video');
+      const overlay = card.querySelector('.video-card-overlay');
+      if (!vid) return;
+      card.addEventListener('mouseenter', () => {
+        // Ensure video is loaded before playing
+        if (!vid.querySelector('source') && vid.dataset.src) {
+          const source = document.createElement('source');
+          source.src = vid.dataset.src;
+          source.type = 'video/mp4';
+          vid.appendChild(source);
+          vid.load();
+        }
+        vid.play();
+        overlay.style.opacity = '0.4';
+      });
+      card.addEventListener('mouseleave', () => {
+        vid.pause();
+        overlay.style.opacity = '1';
+      });
+      // Mobile tap toggle
+      card.addEventListener('click', () => {
+        if (!vid.querySelector('source') && vid.dataset.src) {
+          const source = document.createElement('source');
+          source.src = vid.dataset.src;
+          source.type = 'video/mp4';
+          vid.appendChild(source);
+          vid.load();
+        }
+        if (vid.paused) {
+          vid.play();
+          overlay.style.opacity = '0';
+        } else {
+          vid.pause();
+          overlay.style.opacity = '1';
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
