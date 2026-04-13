@@ -1357,6 +1357,30 @@
         background: var(--forest-mid);
       }
 
+      /* Close button inside overlay */
+      .mobile-nav-close {
+        position: absolute;
+        top: 1.2rem;
+        right: 1.5rem;
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: 1px solid rgba(200, 184, 154, 0.4);
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--charcoal);
+        font-size: 1.2rem;
+        transition: background 0.2s, border-color 0.2s;
+      }
+
+      .mobile-nav-close:hover {
+        background: rgba(200, 184, 154, 0.2);
+        border-color: var(--sand);
+      }
+
       .about-grid,
       .getting-here-grid,
       .local-grid,
@@ -1531,6 +1555,7 @@
 
   <!-- MOBILE NAV OVERLAY -->
   <div class="mobile-nav-overlay" id="mobileNav" role="dialog" aria-modal="true">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&#x2715;</button>
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#amenities">Amenities</a></li>
@@ -2149,6 +2174,14 @@
     // Mobile hamburger menu
     const menuToggle = document.getElementById('menuToggle');
     const mobileNav = document.getElementById('mobileNav');
+    const mobileNavClose = document.getElementById('mobileNavClose');
+
+    function closeMenu() {
+      menuToggle.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      mobileNav.classList.remove('active');
+      document.body.style.overflow = '';
+    }
 
     menuToggle.addEventListener('click', () => {
       const isOpen = menuToggle.classList.toggle('active');
@@ -2157,19 +2190,16 @@
         mobileNav.classList.add('active');
         document.body.style.overflow = 'hidden';
       } else {
-        mobileNav.classList.remove('active');
-        document.body.style.overflow = '';
+        closeMenu();
       }
     });
 
+    // Close button inside overlay
+    mobileNavClose.addEventListener('click', closeMenu);
+
     // Close menu when a link is tapped
     mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuToggle.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        mobileNav.classList.remove('active');
-        document.body.style.overflow = '';
-      });
+      link.addEventListener('click', closeMenu);
     });
   </script>
 </body>
