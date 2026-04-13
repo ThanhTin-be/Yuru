@@ -330,10 +330,10 @@
     }
 
     .about-img-wrap {
-      width: 80%;
+      width: 100%;
       margin: 0 auto;
-      padding-bottom: 112.5%;
-      background: url('imgs/Trang&Linh.jpg') center/cover;
+      padding-bottom: 105%;
+      background: url('imgs/Trang&Linh(2).jpg') 25% center / cover;
       border-radius: 4px;
       position: relative;
     }
@@ -883,24 +883,6 @@
       background: linear-gradient(to top, rgba(10, 12, 8, 0.9) 0%, rgba(10, 12, 8, 0.45) 50%, rgba(10, 12, 8, 0.1) 80%);
     }
 
-    .gallery-cat-featured-badge {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      background: rgba(184, 115, 22, 0.85);
-      backdrop-filter: blur(8px);
-      border-radius: 40px;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
 
     .gallery-cat-info {
       position: absolute;
@@ -1058,216 +1040,146 @@
       }
     }
 
-    /* EXPERIENCES SECTION */
+    /* EXPERIENCES SECTION — full-width cinematic banner */
     .experiences-section {
-      background: var(--cream);
-      padding: 6rem 2rem;
-    }
-
-    .exp-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.55fr;
-      gap: 4rem;
-      align-items: start;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .exp-text-col {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .exp-text-col .section-label {
-      color: var(--text-muted);
-      margin-bottom: 1.2rem;
-      font-size: 0.97rem;
-    }
-
-    .exp-body {
-      font-size: 0.95rem;
-      color: var(--stone);
-      line-height: 1.85;
-      margin: 0 0 2.2rem;
-    }
-
-    .exp-items {
-      display: flex;
-      flex-direction: column;
-      gap: 1.6rem;
-    }
-
-    .exp-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-      padding-left: 1rem;
-      border-left: 2px solid var(--sand);
-    }
-
-    .exp-item-tag {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.63rem;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--forest);
-      opacity: 0.65;
-    }
-
-    .exp-item-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
-      font-weight: 400;
-      color: var(--charcoal);
-      line-height: 1.25;
-    }
-
-    .exp-item-title em {
-      font-style: italic;
-      color: var(--forest);
-    }
-
-    .exp-item-desc {
-      font-size: 0.85rem;
-      color: var(--stone);
-      line-height: 1.7;
-    }
-
-    .exp-images-col {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .exp-img-wrap {
+      padding: 0;
       position: relative;
-      overflow: hidden;
-      border-radius: 4px;
-      cursor: pointer;
     }
 
-
-    /* Image 2 – landscape-friendly: shorter but full width */
-    .exp-img-wrap:last-child {
-      height: 300px;
-    }
-
-    .exp-img-wrap img {
+    .exp-hero {
+      position: relative;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease;
-      filter: brightness(0.82);
+      /* ← chiều rộng banner (giữ 100%) */
+      min-height: 95vh;
+      /* ← chiều cao banner (85vh = 85% màn hình, tăng lên 100vh để full) */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
 
-    .exp-img-wrap:hover img {
-      transform: scale(1.06);
-      filter: brightness(0.65);
+    .exp-hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      /* ← chiều rộng ảnh */
+      height: 100%;
+      /* ← chiều cao ảnh (khớp với .exp-hero) */
+      object-fit: cover;
+      /* ← cách co ảnh: cover=lấp đầy, contain=hiện toàn bộ */
+      object-position: center 60%;
+      /* ← vị trí cắt: [ngang] [dọc] — tăng % dọc để xem phần dưới, giảm để xem phần trên */
+      display: block;
+      transform: scale(1);
+      /* ← zoom ảnh ban đầu (1 = 100%, 1.1 = phóng to 110%) */
+      transition: transform 8s ease;
+    }
+
+    .exp-hero:hover .exp-hero-img {
+      transform: scale(1.04);
     }
 
     .exp-img-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(20, 35, 18, 0.78) 0%, rgba(20, 35, 18, 0.1) 55%, transparent 100%);
-      transition: background 0.4s ease;
+      background:
+        /* Overlay TRÊN (che phần đầu ảnh): số đầu = độ mờ (0=trong, 1=đen), số sau = lan rộng bao xa */
+        linear-gradient(to bottom, rgba(20, 35, 18, 0.1) 0%, transparent 20%),
+        /* Overlay DƯỚI (chứa chữ): số đầu = độ mờ đáy, số giữa = mờ dần, số cuối = kết thúc tại % nào */
+        linear-gradient(to top, rgba(10, 20, 10, 0.82) 0%, rgba(20, 35, 18, 0.2) 45%, transparent 70%);
     }
 
-    .exp-img-wrap:hover .exp-img-overlay {
-      background: linear-gradient(to top, rgba(20, 35, 18, 0.88) 0%, rgba(20, 35, 18, 0.3) 60%, transparent 100%);
+    .exp-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
     }
 
-    .exp-img-caption {
-      position: absolute;
-      bottom: 1.4rem;
-      left: 1.4rem;
-      right: 1.4rem;
-      color: var(--white);
+    .exp-hero-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(244, 239, 228, 0.65);
+      font-weight: 400;
+      margin-bottom: 1.2rem;
+      animation: fadeUp 0.8s ease both;
     }
 
-
-
-    .exp-img-caption-title {
+    .exp-hero-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
       font-weight: 300;
-      line-height: 1.25;
+      line-height: 1.08;
       color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 1.2rem;
+      animation: fadeUp 0.9s 0.1s ease both;
     }
 
-    .exp-img-caption-title em {
+    .exp-hero-title em {
       font-style: italic;
       color: var(--sand-light);
     }
 
-    .exp-img-cta {
+    .exp-hero-divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(200, 184, 154, 0.5);
+      margin: 0 auto 1.4rem;
+      animation: fadeUp 0.9s 0.2s ease both;
+    }
+
+    .exp-hero-body {
+      font-size: 0.97rem;
+      color: rgba(244, 239, 228, 0.75);
+      max-width: 480px;
+      line-height: 1.75;
+      margin-bottom: 2.2rem;
+      animation: fadeUp 1s 0.3s ease both;
+    }
+
+    .exp-hero-cta {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.65rem;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--white);
+      padding: 0.85rem 2.2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      font-size: 0.82rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--sand-light);
-      text-decoration: none;
-      margin-top: 0.5rem;
-      opacity: 0;
-      transform: translateY(5px);
-      transition: opacity 0.35s ease, transform 0.35s ease;
+      font-weight: 400;
+      border: 1px solid rgba(244, 239, 228, 0.45);
+      transition: border-color 0.25s, background 0.25s, transform 0.2s;
+      animation: fadeUp 1s 0.45s ease both;
     }
 
-    .exp-img-wrap:hover .exp-img-cta {
-      opacity: 1;
-      transform: translateY(0);
+    .exp-hero-cta:hover {
+      border-color: rgba(244, 239, 228, 0.85);
+      background: rgba(244, 239, 228, 0.08);
+      transform: translateY(-1px);
     }
 
-    .exp-img-cta svg {
-      width: 12px;
-      height: 12px;
-      transition: transform 0.3s ease;
+    .exp-hero-cta svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.25s;
     }
 
-    .exp-img-wrap:hover .exp-img-cta svg {
+    .exp-hero-cta:hover svg {
       transform: translateX(3px);
     }
 
-    @media (max-width: 900px) {
-      .exp-layout {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-
-      .exp-images-col {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-      }
-
-      .exp-img-wrap:first-child {
-        height: 280px;
-        margin-top: 0;
-      }
-
-      .exp-img-wrap:last-child {
-        height: 280px;
-      }
-
-      .exp-img-cta {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 520px) {
-      .exp-images-col {
-        grid-template-columns: 1fr;
-      }
-
-      .exp-img-wrap:first-child,
-      .exp-img-wrap:last-child {
-        height: 240px;
+    @media (max-width: 768px) {
+      .exp-hero {
+        min-height: 70vh;
       }
     }
 
@@ -1829,42 +1741,24 @@
 
   <!-- EXPERIENCES -->
   <section class="experiences-section" id="experiences">
-    <div class="exp-layout reveal">
-
-      <!-- Left: Text column -->
-      <div class="exp-text-col">
-        <p class="section-label">Experiences</p>
-        <h2 class="section-title" style="margin-bottom: 1rem;">Moments worth<br><em>planning around</em></h2>
-        <div class="divider" style="margin: 0 0 1.5rem;"></div>
-        <p class="exp-body">Some moments are worth planning around. We offer a small handful of guided experiences for
+    <div class="exp-hero reveal">
+      <img class="exp-hero-img" src="imgs/main.jpg" alt="Chartered fishing and crabbing on Hood Canal">
+      <div class="exp-img-overlay"></div>
+      <div class="exp-hero-content">
+        <p class="exp-hero-label">Guided Experiences</p>
+        <h2 class="exp-hero-title">Moments worth<br><em>planning around</em></h2>
+        <div class="exp-hero-divider"></div>
+        <p class="exp-hero-body">Some moments are worth planning around. We offer a small handful of guided experiences
+          for
           those who want them — a private chef sunset dinner on the water, or a chartered fishing and crabbing trip on
           the canal. Nothing packaged. Everything personal.</p>
-
-
-      </div>
-
-      <!-- Right: Images column -->
-      <div class="exp-images-col">
-
-
-        <!-- Image 2: Canal view -->
-        <div class="exp-img-wrap">
-          <img src="imgs/main.jpg" alt="Chartered fishing and crabbing on Hood Canal"
-            style="object-position: center 35%;">
-          <div class="exp-img-overlay"></div>
-          <div class="exp-img-caption">
-
-            <p class="exp-img-caption-title">Lines in the water,<br><em>stories on the way home.</em></p>
-            <a href="#book" class="exp-img-cta">
-              Inquire
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M3 8h10M9 4l4 4-4 4" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
+        <a href="#book" class="exp-hero-cta">
+          Inquire
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M3 8h10M9 4l4 4-4 4" />
+          </svg>
+        </a>
       </div>
     </div>
   </section>
@@ -1885,7 +1779,7 @@
               <polyline points="9 22 9 12 15 12 15 22" />
             </svg>
           </div>
-          <div class="amenity-name">Tent</div>
+          <div class="amenity-name">Tents</div>
           <div class="amenity-desc">SnowPeak tents sleeping 2–8 and a yurt with wood-burning stove, perched on platforms
             above the canal. Views in every direction.</div>
         </div>
@@ -1994,12 +1888,6 @@
         <a href="gallery.html?cat=the-view" class="gallery-cat">
           <img src="imgs/The view-main.jpg" alt="The View at YuRu" class="gallery-cat-img">
           <div class="gallery-cat-overlay"></div>
-          <div class="gallery-cat-featured-badge">
-            <svg width="9" height="9" viewBox="0 0 9 9" fill="currentColor">
-              <circle cx="4.5" cy="4.5" r="4.5" />
-            </svg>
-            Featured
-          </div>
           <div class="gallery-cat-info">
             <div>
               <p class="gallery-cat-name">The View</p>
@@ -2262,14 +2150,12 @@
         <div class="pack-col must">
           <h3>Must Have</h3>
           <div class="pack-items">
-            <div class="pack-item">
-              <div class="pack-dot"></div>Tent (or pre-arrange to use ours)
-            </div>
+
             <div class="pack-item">
               <div class="pack-dot"></div>Bedding, sleeping bag & pillow
             </div>
             <div class="pack-item">
-              <div class="pack-dot"></div>Camp chair & flashlight or headlamp
+              <div class="pack-dot"></div>Flashlight or headlamp
             </div>
             <div class="pack-item">
               <div class="pack-dot"></div>Refillable water bottle
@@ -2313,7 +2199,7 @@
               <div class="pack-dot"></div>Camera or binoculars for wildlife
             </div>
             <div class="pack-item">
-              <div class="pack-dot"></div>Gloves, shovels, rakes & bucket for clamming
+              <div class="pack-dot"></div>Gloves, shovels, rakes & bucket for clamming (at Dosewallips State Park)
             </div>
           </div>
         </div>
