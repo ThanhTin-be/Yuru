@@ -120,9 +120,13 @@
     /* HERO */
     .hero {
       min-height: 100vh;
-      background:
+      background-color: var(--charcoal);
+      background-image:
         linear-gradient(to bottom, rgba(44, 74, 41, 0.28) 0%, rgba(42, 42, 36, 0.52) 100%),
-        url('imgs/The view (3).JPG') center/cover no-repeat;
+        url('imgs/The view (3).JPG');
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -130,6 +134,13 @@
       text-align: center;
       padding: 2rem;
       position: relative;
+    }
+
+    @media (min-width: 769px) {
+      .hero {
+        background-size: 100% auto;
+        background-position: 70% 30%;
+      }
     }
 
     .hero-kicker {
