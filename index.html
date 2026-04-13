@@ -722,11 +722,29 @@
 
     /* BOOKING CTA */
     .booking-cta {
-      background:
+      background-image:
         linear-gradient(to right, rgba(44, 74, 41, 0.92), rgba(44, 74, 41, 0.78)),
-        url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=1400&q=80') center/cover;
+        url('imgs/background_booking.jpg');
+      /* Vị trí cắt ảnh trên Desktop (vd: center, top, center 20%) */
+      background-position: 50% 40%;
+      /* Cách hiển thị ảnh (vd: cover, contain) */
+      background-size: cover;
       text-align: center;
-      padding: 7rem 2rem;
+      /* Điều chỉnh chiều cao phần hiển thị bằng padding (Desktop) */
+      padding: 10rem 2rem;
+      /* Hoặc có thể dùng min-height (vd: 500px, 50vh) */
+      min-height: auto;
+      width: 100%;
+    }
+
+    /* Tuỳ chỉnh cho Mobile */
+    @media (max-width: 768px) {
+      .booking-cta {
+        /* Điều chỉnh chiều cao phần hiển thị bằng padding (Mobile) */
+        padding: 5rem 1.5rem;
+        /* Vị trí cắt ảnh trên Mobile (nếu cần đổi khác với Desktop) */
+        background-position: right;
+      }
     }
 
     .booking-cta .section-label {
@@ -1049,9 +1067,8 @@
     .exp-hero {
       position: relative;
       width: 100%;
-      /* ← chiều rộng banner (giữ 100%) */
+      /* Chiều cao banner trên Desktop (vd: 80vh, 100vh, 600px) */
       min-height: 95vh;
-      /* ← chiều cao banner (85vh = 85% màn hình, tăng lên 100vh để full) */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1062,16 +1079,18 @@
       position: absolute;
       inset: 0;
       width: 100%;
-      /* ← chiều rộng ảnh */
       height: 100%;
-      /* ← chiều cao ảnh (khớp với .exp-hero) */
+      /* Cách hiển thị ảnh (cover = lấp đầy, contain = hiện toàn bộ) */
       object-fit: cover;
-      /* ← cách co ảnh: cover=lấp đầy, contain=hiện toàn bộ */
+      /* Vị trí cắt ảnh trên Desktop: [ngang] [dọc]
+         Ngang: left / center / right / 0% – 100%
+         Dọc:   top  / center / bottom / 0% – 100%
+         Ví dụ: center 40% = căn giữa ngang, lấy phần trên nhiều hơn
+                center 70% = căn giữa ngang, lấy phần dưới nhiều hơn */
       object-position: center 60%;
-      /* ← vị trí cắt: [ngang] [dọc] — tăng % dọc để xem phần dưới, giảm để xem phần trên */
       display: block;
+      /* Zoom ảnh ban đầu (1 = 100%, 1.05 = phóng to 5%) */
       transform: scale(1);
-      /* ← zoom ảnh ban đầu (1 = 100%, 1.1 = phóng to 110%) */
       transition: transform 8s ease;
     }
 
@@ -1177,9 +1196,21 @@
       transform: translateX(3px);
     }
 
+    /* Tuỳ chỉnh cho Mobile (màn hình ≤ 768px) */
     @media (max-width: 768px) {
       .exp-hero {
-        min-height: 70vh;
+        /* Chiều cao banner trên Mobile (vd: 60vh, 70vh, 500px) */
+        min-height: 60vh;
+      }
+
+      .exp-hero-img {
+        /* Vị trí cắt ảnh trên Mobile: [ngang] [dọc]
+           Ví dụ: center 40% = lấy phần trên (thấy đầu nhân vật)
+                  center 70% = lấy phần dưới (thấy cá, nước)
+                  left 60%   = dịch sang trái và lấy phần giữa-dưới */
+        object-position: 25%;
+        /* Zoom ảnh trên Mobile (1 = không zoom, 1.1 = phóng to 10%) */
+        transform: scale(1);
       }
     }
 
@@ -1886,7 +1917,7 @@
       <div class="gallery-cats">
 
         <a href="gallery.html?cat=the-view" class="gallery-cat">
-          <img src="imgs/The view-main.jpg" alt="The View at YuRu" class="gallery-cat-img">
+          <img src="imgs/Waterfront-main.jpg" alt="The View at YuRu" class="gallery-cat-img">
           <div class="gallery-cat-overlay"></div>
           <div class="gallery-cat-info">
             <div>
@@ -1938,7 +1969,7 @@
           </div>
         </a>
 
-        <!-- 4. The View Wide -->
+        <!-- 4. The View Wide
         <a href="gallery.html?cat=the-view" class="gallery-cat">
           <img src="imgs/Waterfront-main.jpg" alt="Hood Canal View at YuRu" class="gallery-cat-img"
             style="object-position: center 60%;">
@@ -1955,7 +1986,7 @@
               </svg>
             </div>
           </div>
-        </a>
+        </a> -->
 
 
       </div><!-- /gallery-cats -->
