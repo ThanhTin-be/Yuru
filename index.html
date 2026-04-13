@@ -306,19 +306,6 @@
       color: var(--charcoal);
     }
 
-    .fact-pill {
-      display: inline-block;
-      background: var(--cream);
-      border: 1px solid var(--sand-light);
-      border-radius: 2px;
-      padding: 0.75rem 1.25rem;
-      margin-top: 1rem;
-      font-size: 0.82rem;
-      color: var(--forest);
-      font-style: italic;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem;
-    }
 
     .about-visual {
       position: relative;
@@ -575,13 +562,13 @@
       position: relative;
       min-height: 440px;
       width: 100%;
-      background: url('imgs/The view (2).JPG') center/cover no-repeat;
+      background: url('imgs/google_map.jpg') center/cover no-repeat;
     }
 
     .map-pin {
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 43%;
+      left: 51%;
       transform: translate(-50%, -50%);
       background: var(--forest);
       width: 14px;
@@ -1114,40 +1101,6 @@
       text-transform: uppercase;
     }
 
-    .mission-values {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin: 3rem auto 0;
-      max-width: 720px;
-    }
-
-    .mission-value-pill {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      padding: 0.8rem 1.4rem;
-      border: 1px solid rgba(200, 184, 154, 0.28);
-      border-radius: 50px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(8px);
-      font-size: 0.82rem;
-      color: rgba(244, 239, 228, 0.8);
-      letter-spacing: 0.04em;
-      transition: background 0.25s, border-color 0.25s;
-    }
-
-    .mission-value-pill:hover {
-      background: rgba(255, 255, 255, 0.11);
-      border-color: rgba(200, 184, 154, 0.55);
-    }
-
-    .mission-value-pill-icon {
-      font-size: 1rem;
-      line-height: 1;
-    }
-
     .duc-logo-area {
       margin: 2.5rem auto 0;
       padding: 1.25rem 1.6rem;
@@ -1423,11 +1376,17 @@
             carry home.</p>
           <p>We keep things grounded and eco-minded here: private well water, real dishes over disposables, and a
             genuine care for the land we're lucky enough to call our own.</p>
+          <p
+            style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--forest);font-weight:600;margin-top:2rem;margin-bottom:0.4rem;opacity:0.75;">
+            Experiences</p>
+          <p>Some moments are worth planning around. We offer a small handful of guided experiences for those who want
+            them — a private chef sunset dinner on the water, or a chartered fishing and crabbing trip on the canal.
+            Nothing packaged. Everything personal.</p>
           <div class="signature-wrap">
             <span class="signature-text">Daniel Linh &amp; Anna Trang</span>
             <span class="signature-pen"></span>
           </div>
-          <div class="fact-pill">★ Hood Canal is the only saltwater fjord in the lower 48 states.</div>
+
         </div>
         <div class="about-visual reveal">
           <div class="about-img-wrap"></div>
@@ -1486,7 +1445,7 @@
             </svg>
           </div>
           <div class="amenity-name">Private Beach Access</div>
-          <div class="amenity-desc">Direct access to your own oyster & clam beds. Low tide means dinner.</div>
+          <div class="amenity-desc">Direct access to your own oyster. Low tide means dinner.</div>
         </div>
         <div class="amenity-card">
           <div class="amenity-icon">
@@ -1603,7 +1562,8 @@
 
         <!-- 3. Kitchen -->
         <a href="gallery.html?cat=kitchen" class="gallery-cat">
-          <img src="imgs/Kitchen-main.jpg" alt="Kitchen at YuRu" class="gallery-cat-img">
+          <img src="imgs/Kitchen-main.jpg" alt="Kitchen at YuRu" class="gallery-cat-img"
+            style="object-position: center 30%;">
           <div class="gallery-cat-overlay"></div>
           <div class="gallery-cat-info">
             <div>
@@ -1717,6 +1677,10 @@
             <span class="local-item-dist">1.4 mi</span>
           </div>
           <div class="local-item">
+            <span class="local-item-name">Seal Rock</span>
+            <span class="local-item-dist">4.5 mi</span>
+          </div>
+          <div class="local-item">
             <span class="local-item-name">Rocky Brook Falls</span>
             <span class="local-item-dist">5.0 mi</span>
           </div>
@@ -1758,7 +1722,7 @@
           <div style="margin-top:2rem;">
             <h3>On-Site Recreation</h3>
             <div class="local-item">
-              <span class="local-item-name">Beachcombing — oysters & clams</span>
+              <span class="local-item-name">Beachcombing — oysters</span>
               <span class="local-item-dist onsite">on-site</span>
             </div>
             <div class="local-item">
@@ -1805,7 +1769,7 @@
             </div>
           </div>
           <p style="font-size:0.82rem;color:var(--text-muted);margin-top:1.2rem;font-style:italic;">Once on the
-            Peninsula: US-101 → Brinnon → Pleasant Harbor Rd. Third property on the right.</p>
+            Peninsula: US-101 → Brinnon → Pleasant Harbor Rd.</p>
         </div>
         <div class="reveal">
           <div class="map-placeholder" role="img" aria-label="Hoàng hôn" title="Hoàng hôn">
@@ -1929,8 +1893,9 @@
       <div class="divider"></div>
 
       <p class="mission-body">
-        YuRu was built with a single purpose: every dollar you pay for a stay goes directly to the
-        Đức Foundation — a scholarship fund supporting Vietnamese students in their pursuit of education.
+        Behind every YuRu stay is a simple promise — you choose what to give, and your donation goes directly to the Đức
+        Foundation, funding scholarships that help college students in Vietnam access the education they deserve. All
+        contributions are tax-deductible.
       </p>
 
       <div class="mission-pull-quote">
@@ -1940,32 +1905,11 @@
         <cite>— YuRu, Hood Canal</cite>
       </div>
 
-      <p class="mission-body">
-        We keep the operation simple and personal so that nothing gets lost between your booking
-        and a student's opportunity. No overhead. No middleman. Just camping and scholarships.
-      </p>
-
-      <div class="mission-values">
-        <div class="mission-value-pill">
-          <span class="mission-value-pill-icon">🌿</span>
-          100% proceeds donated
-        </div>
-        <div class="mission-value-pill">
-          <span class="mission-value-pill-icon">📚</span>
-          Vietnamese student scholarships
-        </div>
-        <div class="mission-value-pill">
-          <span class="mission-value-pill-icon">🤲</span>
-          No overhead · No middleman
-        </div>
-      </div>
-
       <div class="duc-logo-area">
         <div class="duc-badge"><img src="imgs/Duc Logo Profile Yellow.jpg" alt="Đức Foundation"></div>
         <div class="duc-info">
           <p><a href="https://ducfoundation.org/" target="_blank" style="color:inherit;text-decoration:none;">Đức
               Foundation</a></p>
-          <p>Scholarships for Vietnamese students · 100% of YuRu proceeds donated</p>
         </div>
       </div>
     </div>
@@ -1979,14 +1923,11 @@
         <h2 class="section-title">Ready to get<br><em>yuru'd?</em></h2>
         <div class="divider"></div>
         <p>Reach out to Linh & Trang to check availability and book your stay at Hood Canal's most carefree corner.</p>
-        <div class="hero-btns" style="margin-bottom:1.5rem;">
-          <a href="mailto:Hello@HeyYuRu.com" class="btn-primary">Email to Book</a>
-          <a href="tel:2064461291" class="btn-ghost">206.446.1291</a>
-        </div>
-        <div class="contact-chips">
-          <a href="https://heyyuru.com" class="contact-chip">🌐 HeyYuRu.com</a>
-          <a href="#" class="contact-chip">📘 Hey.YuRu</a>
-          <a href="#" class="contact-chip">📷 @Hey.YuRu</a>
+        <div class="hero-btns" style="margin-bottom:1.5rem; flex-wrap: wrap;">
+
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=Hello@HeyYuRu.com" target="_blank"
+            class="btn-primary">EMAIL TO BOOK</a>
+          <a href="https://www.instagram.com/hey.yuru/reposts/" target="_blank" class="btn-ghost">Instagram</a>
         </div>
       </div>
     </div>
