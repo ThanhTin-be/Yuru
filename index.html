@@ -65,6 +65,11 @@
       transition: background 0.3s;
     }
 
+    /* Hide hamburger on desktop */
+    .menu-toggle {
+      display: none;
+    }
+
     .nav-logo {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.6rem;
@@ -1241,6 +1246,117 @@
         display: none;
       }
 
+      /* MOBILE MENU TOGGLE */
+      .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 36px;
+        height: 36px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        z-index: 200;
+        position: relative;
+      }
+
+      .menu-toggle span {
+        display: block;
+        width: 22px;
+        height: 1.5px;
+        background: var(--charcoal);
+        border-radius: 2px;
+        transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+        transform-origin: center;
+      }
+
+      .menu-toggle.active span:nth-child(1) {
+        transform: translateY(6.5px) rotate(45deg);
+      }
+
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+        width: 0;
+      }
+
+      .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-6.5px) rotate(-45deg);
+      }
+
+      /* MOBILE NAV OVERLAY */
+      .mobile-nav-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 150;
+        background: rgba(244, 239, 228, 0.97);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .mobile-nav-overlay.active {
+        display: flex;
+        opacity: 1;
+      }
+
+      .mobile-nav-overlay ul {
+        list-style: none;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+      }
+
+      .mobile-nav-overlay ul li a {
+        display: block;
+        padding: 1.1rem 2rem;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.8rem;
+        font-weight: 300;
+        color: var(--charcoal);
+        text-decoration: none;
+        letter-spacing: 0.03em;
+        border-bottom: 1px solid rgba(200, 184, 154, 0.25);
+        transition: color 0.2s;
+      }
+
+      .mobile-nav-overlay ul li:first-child a {
+        border-top: 1px solid rgba(200, 184, 154, 0.25);
+      }
+
+      .mobile-nav-overlay ul li a:hover {
+        color: var(--forest);
+      }
+
+      .mobile-nav-overlay .mobile-cta {
+        margin-top: 1.5rem;
+        background: var(--forest);
+        color: var(--cream) !important;
+        padding: 0.9rem 2.5rem;
+        border-radius: 2px;
+        font-family: 'Jost', sans-serif !important;
+        font-size: 0.82rem !important;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        text-decoration: none;
+        display: inline-block;
+        transition: background 0.2s;
+        border-top: none !important;
+        border-bottom: none !important;
+      }
+
+      .mobile-nav-overlay .mobile-cta:hover {
+        background: var(--forest-mid);
+      }
+
       .about-grid,
       .getting-here-grid,
       .local-grid,
@@ -1405,7 +1521,26 @@
       <li><a href="#mission">Our Mission</a></li>
       <li><a class="nav-cta" href="#book">Reserve</a></li>
     </ul>
+    <!-- Hamburger toggle (mobile only) -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE NAV OVERLAY -->
+  <div class="mobile-nav-overlay" id="mobileNav" role="dialog" aria-modal="true">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#amenities">Amenities</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#local">Explore</a></li>
+      <li><a href="#getting-here">Getting Here</a></li>
+      <li><a href="#mission">Our Mission</a></li>
+    </ul>
+    <a href="#book" class="mobile-cta">Reserve</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
@@ -2011,7 +2146,31 @@
   </footer>
 
   <script>
-    /* No active scripts */
+    // Mobile hamburger menu
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      if (isOpen) {
+        mobileNav.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      } else {
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Close menu when a link is tapped
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
   </script>
 </body>
 
