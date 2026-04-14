@@ -8,6 +8,16 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap"
     rel="stylesheet" />
+
+  <!-- EmailJS Config -->
+  <script src="config.js"></script>
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init(window.EMAILJS_PUBLIC_KEY || '');
+    })();
+  </script>
   <style>
     *,
     *::before,
@@ -171,6 +181,17 @@
       flex-shrink: 0;
     }
 
+    .section-hint {
+      margin-left: auto;
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--clay);
+      opacity: 0.75;
+    }
+
     .field-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -259,46 +280,89 @@
     .checkbox-item {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       background: var(--warm-white);
       border: 1px solid var(--sand);
       border-radius: 2px;
-      padding: 12px 16px;
+      padding: 14px 16px;
       cursor: pointer;
-      transition: border-color 0.2s, background 0.2s;
+      transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+      user-select: none;
     }
 
     .checkbox-item:hover {
       border-color: var(--clay);
     }
 
+    /* Ẩn checkbox gốc, giữ lại để vẫn submit được */
     .checkbox-item input[type="checkbox"] {
-      width: 16px;
-      height: 16px;
-      min-width: 16px;
-      padding: 0;
-      border: 1px solid var(--sand);
-      border-radius: 1px;
-      cursor: pointer;
-      accent-color: var(--moss);
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none;
     }
 
-    .checkbox-item input[type="checkbox"]:focus {
-      box-shadow: none;
+    /* Ô vuông custom */
+    .custom-check {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      border: 1.5px solid var(--sand);
+      border-radius: 2px;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.25s, background 0.25s;
+      flex-shrink: 0;
     }
 
-    .checkbox-item label {
+    /* Dấu tích SVG */
+    .custom-check svg {
+      width: 11px;
+      height: 11px;
+      stroke: var(--moss);
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      opacity: 0;
+      transform: scale(0.6);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    /* Khi checkbox được check */
+    .checkbox-item input[type="checkbox"]:checked~.custom-check {
+      border-color: var(--moss);
+      background: rgba(107, 122, 94, 0.08);
+    }
+
+    .checkbox-item input[type="checkbox"]:checked~.custom-check svg {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .checkbox-item span {
       font-size: 12px;
-      letter-spacing: 0.1em;
-      text-transform: none;
+      letter-spacing: 0.08em;
       color: var(--ink);
       cursor: pointer;
       margin: 0;
+      line-height: 1.4;
     }
 
     .checkbox-item:has(input:checked) {
       border-color: var(--moss);
       background: rgba(107, 122, 94, 0.06);
+    }
+
+    .checkbox-item:hover .custom-check {
+      border-color: var(--clay);
+    }
+
+    .checkbox-item:has(input:checked):hover .custom-check {
+      border-color: var(--moss);
     }
 
     /* Guest count */
@@ -363,10 +427,19 @@
     .eco-note strong {
       font-weight: 500;
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       font-size: 10px;
+    }
+
+    .eco-note p {
+      margin: 0;
+      padding: 0;
+    }
+
+    .eco-note p + p {
+      margin-top: 6px;
     }
 
     /* Submit */
@@ -582,6 +655,7 @@
         <div class="section-label">
           <span class="section-num">2</span>
           Your stay
+          <span class="section-hint">2-night minimum</span>
         </div>
         <div class="field-row">
           <div class="field">
@@ -628,19 +702,39 @@
         <div class="checkbox-grid">
           <label class="checkbox-item">
             <input type="checkbox" name="experiences" value="chef-dinner" />
-            <label>Private Chef Dinner</label>
+            <div class="custom-check">
+              <svg viewBox="0 0 12 12">
+                <polyline points="1.5,6 4.5,9.5 10.5,2.5" />
+              </svg>
+            </div>
+            <span>Private Chef Dinner</span>
           </label>
           <label class="checkbox-item">
             <input type="checkbox" name="experiences" value="fishing" />
-            <label>Chartered Fishing & Crabbing</label>
+            <div class="custom-check">
+              <svg viewBox="0 0 12 12">
+                <polyline points="1.5,6 4.5,9.5 10.5,2.5" />
+              </svg>
+            </div>
+            <span>Chartered Fishing & Crabbing</span>
           </label>
           <label class="checkbox-item">
             <input type="checkbox" name="experiences" value="both" />
-            <label>Both — full experience</label>
+            <div class="custom-check">
+              <svg viewBox="0 0 12 12">
+                <polyline points="1.5,6 4.5,9.5 10.5,2.5" />
+              </svg>
+            </div>
+            <span>Both — full experience</span>
           </label>
           <label class="checkbox-item">
             <input type="checkbox" name="experiences" value="none" />
-            <label>No add-ons for now</label>
+            <div class="custom-check">
+              <svg viewBox="0 0 12 12">
+                <polyline points="1.5,6 4.5,9.5 10.5,2.5" />
+              </svg>
+            </div>
+            <span>No add-ons for now</span>
           </label>
         </div>
       </div>
@@ -660,8 +754,9 @@
         </div>
         <div class="eco-note">
           <strong>🌿 A gentle reminder</strong>
-          YuRu is a leave-no-trace property. No trash service on-site — please plan to pack out what you bring in. Well
-          water is pure and delicious from the tap. Single-use plastics are kindly left at home.
+          <p>YuRu is a leave-no-trace property. No trash service on-site — please plan to pack out what you bring in.</p>
+          <p>Well water is pure and delicious from the tap, bring your own reusable water bottle.</p>
+          <p>Single-use plastics are kindly left at home — we have dishes and utensils.</p>
         </div>
       </div>
 
@@ -745,68 +840,29 @@
 
       if (!valid) return;
 
-      // Gom dữ liệu từ các input HTML
-      const firstName = document.getElementById('first-name').value.trim();
-      const lastName = document.getElementById('last-name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
+      const submitBtn = this.querySelector('.submit-btn');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<span>Sending request...</span>';
+      submitBtn.disabled = true;
 
-      const referredByEl = document.getElementById('referred-by');
-      const referredBy = referredByEl.options[referredByEl.selectedIndex]?.text || '';
+      // Gửi form qua EmailJS
+      emailjs.sendForm(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_ID, this)
+        .then(() => {
+          // Thành công
+          this.style.opacity = '0';
+          this.style.transform = 'translateY(-10px)';
+          this.style.transition = 'opacity 0.4s, transform 0.4s';
 
-      const checkIn = document.getElementById('check-in').value;
-      const checkOut = document.getElementById('check-out').value;
-
-      const accEl = document.getElementById('accommodation');
-      const accommodation = accEl.options[accEl.selectedIndex]?.text || '';
-      const guestNum = document.getElementById('guestsHidden').value;
-
-      // Lấy danh sách add-ons
-      let expList = [];
-      document.querySelectorAll('input[name="experiences"]:checked').forEach(cb => {
-        expList.push(cb.nextElementSibling.innerText.trim());
-      });
-      const expText = expList.length > 0 ? expList.join(', ') : 'None selected';
-
-      const msg = document.getElementById('message').value.trim();
-
-      // Dựng Nội dung email
-      const subject = encodeURIComponent(`Reservation Request: ${firstName} ${lastName}`);
-      const bodyText = `Hi Linh & Trang,
-
-I have a new reservation request via the YuRu website:
-
-=== GUEST DETAILS ===
-- Name: ${firstName} ${lastName}
-- Email: ${email}
-- Phone: ${phone || 'N/A'}
-- Heard about YuRu: ${referredBy || 'N/A'}
-
-=== STAY DETAILS ===
-- Check-in: ${checkIn}
-- Check-out: ${checkOut}
-- Accommodation: ${accommodation}
-- Guests: ${guestNum}
-- Experiences requested: ${expText}
-
-=== NOTES ===
-${msg || 'None'}
-`;
-      const body = encodeURIComponent(bodyText);
-
-      // Mở trực tiếp trang viết thư của Gmail trên trình duyệt (mở tab mới)
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=hello@HeyYuRu.com&su=${subject}&body=${body}`;
-      window.open(gmailUrl, '_blank');
-
-      // Vẫn hiện hoạt ảnh Success để tăng UX
-      this.style.opacity = '0';
-      this.style.transform = 'translateY(-10px)';
-      this.style.transition = 'opacity 0.4s, transform 0.4s';
-
-      setTimeout(() => {
-        this.style.display = 'none';
-        document.getElementById('successState').classList.add('visible');
-      }, 400);
+          setTimeout(() => {
+            this.style.display = 'none';
+            document.getElementById('successState').classList.add('visible');
+          }, 400);
+        }, (error) => {
+          // Thất bại
+          alert('Sorry, an error occurred while sending your request: ' + JSON.stringify(error));
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+        });
     });
   </script>
 </body>
