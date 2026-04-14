@@ -745,7 +745,60 @@
 
       if (!valid) return;
 
-      // Simulate send
+      // Gom dữ liệu từ các input HTML
+      const firstName = document.getElementById('first-name').value.trim();
+      const lastName = document.getElementById('last-name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+
+      const referredByEl = document.getElementById('referred-by');
+      const referredBy = referredByEl.options[referredByEl.selectedIndex]?.text || '';
+
+      const checkIn = document.getElementById('check-in').value;
+      const checkOut = document.getElementById('check-out').value;
+
+      const accEl = document.getElementById('accommodation');
+      const accommodation = accEl.options[accEl.selectedIndex]?.text || '';
+      const guestNum = document.getElementById('guestsHidden').value;
+
+      // Lấy danh sách add-ons
+      let expList = [];
+      document.querySelectorAll('input[name="experiences"]:checked').forEach(cb => {
+        expList.push(cb.nextElementSibling.innerText.trim());
+      });
+      const expText = expList.length > 0 ? expList.join(', ') : 'None selected';
+
+      const msg = document.getElementById('message').value.trim();
+
+      // Dựng Nội dung email
+      const subject = encodeURIComponent(`Reservation Request: ${firstName} ${lastName}`);
+      const bodyText = `Hi Linh & Trang,
+
+I have a new reservation request via the YuRu website:
+
+=== GUEST DETAILS ===
+- Name: ${firstName} ${lastName}
+- Email: ${email}
+- Phone: ${phone || 'N/A'}
+- Heard about YuRu: ${referredBy || 'N/A'}
+
+=== STAY DETAILS ===
+- Check-in: ${checkIn}
+- Check-out: ${checkOut}
+- Accommodation: ${accommodation}
+- Guests: ${guestNum}
+- Experiences requested: ${expText}
+
+=== NOTES ===
+${msg || 'None'}
+`;
+      const body = encodeURIComponent(bodyText);
+
+      // Mở trực tiếp trang viết thư của Gmail trên trình duyệt (mở tab mới)
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=hello@HeyYuRu.com&su=${subject}&body=${body}`;
+      window.open(gmailUrl, '_blank');
+
+      // Vẫn hiện hoạt ảnh Success để tăng UX
       this.style.opacity = '0';
       this.style.transform = 'translateY(-10px)';
       this.style.transition = 'opacity 0.4s, transform 0.4s';
