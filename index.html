@@ -338,41 +338,7 @@
       position: relative;
     }
 
-    .about-badge {
-      position: absolute;
-      bottom: -1.5rem;
-      left: -1.5rem;
-      background: var(--forest);
-      color: var(--cream);
-      padding: 2rem 1.8rem 1.8rem;
-      clip-path: path('M10 70 C-5 40, 5 5, 40 2 C70 -2, 110 8, 125 35 C140 60, 130 100, 105 115 C80 130, 30 128, 12 105 C-2 88, 20 95, 10 70Z');
-      width: 145px;
-      height: 135px;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.82rem;
-      line-height: 1.45;
-      text-align: center;
-      filter: drop-shadow(0 8px 18px rgba(44, 74, 41, 0.35));
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.25rem;
-    }
 
-    .about-badge-icon {
-      font-size: 2.2rem;
-      line-height: 1;
-      display: block;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-    }
-
-    .about-badge span:not(.about-badge-icon) {
-      font-style: italic;
-      font-size: 0.85rem;
-      opacity: 0.9;
-      letter-spacing: 0.01em;
-    }
 
     /* AMENITIES */
     .amenities {
@@ -1548,9 +1514,7 @@
         gap: 2.5rem;
       }
 
-      .about-badge {
-        display: none;
-      }
+
 
       .kitchen-note {
         flex-direction: column;
@@ -1762,9 +1726,6 @@
         </div>
         <div class="about-visual reveal">
           <div class="about-img-wrap"></div>
-          <div class="about-badge">
-            <span>private beach access to oysters</span>
-          </div>
         </div>
       </div>
     </div>
@@ -1781,7 +1742,8 @@
         <div class="exp-hero-divider"></div>
         <p class="exp-hero-body">Some moments are worth planning around. We offer a small handful of guided experiences
           for
-          those who want them — a private chef sunset dinner on the water, or a chartered fishing and crabbing trip on
+          those who want them — a private chef dinner at sunset on the water, or a chartered fishing and crabbing trip
+          on
           the canal. Nothing packaged. Everything personal.</p>
         <a href="#book" class="exp-hero-cta">
           Inquire
@@ -1790,6 +1752,37 @@
             <path d="M3 8h10M9 4l4 4-4 4" />
           </svg>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="mission-section" id="mission">
+    <div class="section-inner">
+      <p class="section-label">Why we exist</p>
+      <h2 class="section-title">Every stay<br>funds a <em>future.</em></h2>
+      <div class="divider"></div>
+
+      <p class="mission-body">
+        Behind every YuRu stay is a simple promise — your donation goes directly to the Đức
+        Foundation, funding scholarships that help college students in Vietnam access the education they deserve.
+        Contributions are tax-deductible.
+      </p>
+
+      <div class="mission-pull-quote">
+        <blockquote>
+          "We believe a night under the stars should mean something beyond the stay itself."
+        </blockquote>
+        <cite>— YuRu, Hood Canal</cite>
+      </div>
+
+      <div class="duc-logo-area">
+        <div class="duc-badge"><a href="https://ducfoundation.org/" target="_blank"><img
+              src="imgs/Duc Logo Profile Yellow.jpg" alt="Đức Foundation"></a></div>
+        <div class="duc-info">
+          <p><a href="https://ducfoundation.org/" target="_blank" style="color:inherit;text-decoration:none;">Đức
+              Foundation</a></p>
+        </div>
       </div>
     </div>
   </section>
@@ -1833,7 +1826,8 @@
           </div>
           <div class="amenity-name">Outdoor Chef's Kitchen</div>
           <div class="amenity-desc">A Dacor 6-burner stove. A Blackstone griddle. A Weber BBQ. Every pot, pan, dish, and
-            utensil you need. Cook like you’re home — or better. Leave the single-use plastic behind.</div>
+            utensil you need. Cook like you're home — or better. We've got the dishes; leave the single-use plastic at
+            home.</div>
         </div>
         <div class="amenity-card">
           <div class="amenity-icon">
@@ -1891,15 +1885,29 @@
             </svg>
           </div>
           <div class="amenity-name">Crab Pots</div>
-          <div class="amenity-desc">Seasonal crabbing in Hood Canal. BYO bait & fishing license.</div>
+          <div class="amenity-desc">Seasonal crabbing right off the property. Bring your own bait and fishing license.
+            We've got the crab pots.</div>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 20h16" />
+              <path d="M4 20V8a2 2 0 012-2h12a2 2 0 012 2v12" />
+              <path d="M9 11h6M9 15h6" />
+            </svg>
+          </div>
+          <div class="amenity-name">Lounge Deck</div>
+          <div class="amenity-desc">A dedicated lounge deck overlooking the water. Bring your coffee, your book, or
+            nothing at all — sink into a couch or hammock and watch the tide.</div>
         </div>
       </div>
       <div class="kitchen-note reveal">
         <div>
           <div class="kitchen-note-label">A note on eco</div>
           <h3>Leave it better than you found it</h3>
-          <p>Limited refrigeration on-site — plan ahead with coolers. Well water is pure and delicious straight from the
-            tap. All faucets, all sinks. Bring a refillable bottle and skip the plastic.</p>
+          <p>Well water is pure and delicious straight from the tap. All faucets, all sinks. Bring a refillable bottle
+            and skip the plastic. There's no trash service here — pack out your trash and leave the land as you found
+            it.</p>
         </div>
       </div>
     </div>
@@ -2063,7 +2071,7 @@
             <span class="local-item-dist">0.9 mi</span>
           </div>
           <div class="local-item">
-            <span class="local-item-name">Geoduck Family Restaurant</span>
+            <span class="local-item-name">Geoduck Restaurant and Lounge</span>
             <span class="local-item-dist">0.9 mi</span>
           </div>
           <div class="local-item">
@@ -2131,8 +2139,7 @@
             <div class="map-pin"></div>
             <div class="map-label">YuRu · Brinnon, WA</div>
           </div>
-          <p style="font-size:0.78rem;color:var(--text-muted);margin-top:0.75rem;text-align:center;">Parking on the west
-            side of Pleasant Harbor Rd. Golf cart shuttles you to your tent.</p>
+
         </div>
       </div>
     </div>
@@ -2151,19 +2158,19 @@
           <div class="review-stars">★ ★ ★ ★ ★</div>
           <p class="review-quote">"Came for the glamping, left completely yuru'd — 10/10 would totally chill here
             again."</p>
-          <div class="review-source">Verified Guest</div>
+          <div class="review-source">S. Kelly</div>
         </div>
         <div class="review-card">
           <div class="review-stars">★ ★ ★ ★ ★</div>
           <p class="review-quote">"Somewhere between the salty breezes and hammock snoozes, I hit peak yuru — part sea
             sprite, part professional lounger."</p>
-          <div class="review-source">Verified Guest</div>
+          <div class="review-source">S. Chantorn</div>
         </div>
         <div class="review-card">
           <div class="review-stars">★ ★ ★ ★ ★</div>
           <p class="review-quote">"Fully yuru'd — zen'd out and loving it. The private beach access made the whole
             trip."</p>
-          <div class="review-source">Verified Guest</div>
+          <div class="review-source">T. Johnson</div>
         </div>
       </div>
     </div>
@@ -2204,7 +2211,7 @@
               <div class="pack-dot"></div>Sturdy water shoes — sharp oyster shells!
             </div>
             <div class="pack-item">
-              <div class="pack-dot"></div>Charcoal, biodegradable dish soap, food & drinks
+              <div class="pack-dot"></div>Biodegradable dish soap, dish towels, food & drinks
             </div>
           </div>
         </div>
@@ -2238,36 +2245,7 @@
     </div>
   </section>
 
-  <!-- MISSION -->
-  <section class="mission-section" id="mission">
-    <div class="section-inner">
-      <p class="section-label">Why we exist</p>
-      <h2 class="section-title">Every stay<br>funds a <em>future.</em></h2>
-      <div class="divider"></div>
 
-      <p class="mission-body">
-        Behind every YuRu stay is a simple promise — you choose what to give, and your donation goes directly to the Đức
-        Foundation, funding scholarships that help college students in Vietnam access the education they deserve. All
-        contributions are tax-deductible.
-      </p>
-
-      <div class="mission-pull-quote">
-        <blockquote>
-          "We believe a night under the stars should mean something beyond the stay itself."
-        </blockquote>
-        <cite>— YuRu, Hood Canal</cite>
-      </div>
-
-      <div class="duc-logo-area">
-        <div class="duc-badge"><a href="https://ducfoundation.org/" target="_blank"><img
-              src="imgs/Duc Logo Profile Yellow.jpg" alt="Đức Foundation"></a></div>
-        <div class="duc-info">
-          <p><a href="https://ducfoundation.org/" target="_blank" style="color:inherit;text-decoration:none;">Đức
-              Foundation</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- BOOKING CTA -->
   <section class="booking-cta" id="book">
@@ -2301,8 +2279,10 @@
       <a href="#mission">Our Mission</a>
       <a href="#book">RESERVE</a>
     </div>
-    <p>115 Pleasant Harbor Rd · Brinnon, WA 98320 · Hood Canal</p>
-    <p style="margin-top:0.5rem;font-size:0.72rem;opacity:0.4;">© 2025 YuRu. All rights reserved.</p>
+    <p><a href="https://mail.google.com/mail/?view=cm&fs=1&to=Hello@HeyYuRu.com" target="_blank"
+        style="color:inherit;text-decoration:none;">Hello@HeyYuRu.com</a> · 115 Pleasant Harbor Rd · Brinnon, WA 98320 ·
+      Hood Canal</p>
+    <p style="margin-top:0.5rem;font-size:0.72rem;opacity:0.4;">© 2026 YuRu. All rights reserved.</p>
   </footer>
 
   <script>
